@@ -104,6 +104,9 @@
 <loc>http://0.0.0.0:4000/publications/</loc>
 </url>
 <url>
+<loc>http://0.0.0.0:4000/Research/</loc>
+</url>
+<url>
 <loc>http://0.0.0.0:4000/sitemap/</loc>
 </url>
 <url>
@@ -147,6 +150,14 @@
 <url>
 <loc>http://0.0.0.0:4000/files/slides3.pdf</loc>
 <lastmod>2025-08-19T23:32:47+00:00</lastmod>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/files/uq_paper.pdf</loc>
+<lastmod>2025-09-03T22:33:50+00:00</lastmod>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/images/uq_paper_thumbnail.pdf</loc>
+<lastmod>2025-09-03T22:35:21+00:00</lastmod>
 </url>
 <url>
 <loc>http://0.0.0.0:4000/talkmap/map.html</loc>

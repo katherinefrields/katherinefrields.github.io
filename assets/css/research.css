@@ -1,0 +1,225 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;       
+    width: 100%;    /* prevents seeing beyond viewport */
+  }
+  
+
+
+.fullwidth {
+    width: 100vw;          /* take entire viewport width */
+  }
+  
+  .three-sections.fullwidth {
+    width: 100vw;         /* full viewport width */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .section {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* text left, image(s) right */
+    align-items: stretch;             /* align content to top */
+    gap: 2rem;
+    padding: 4rem 6vw;
+    box-sizing: border-box;
+  
+    border-top: none;
+    border-bottom: none;
+  }
+  
+  /* Add dividing line between sections */
+  .section + .section {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Text column */
+  .section-text {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  /* Images container */
+  .section-image {
+    display: flex;
+    flex-direction: column;       /* stack images vertically */
+    justify-content: flex-start;  /* start at top, don't stretch */
+    align-items: center;          /* center horizontally */
+    gap: 1rem;                     /* space between images */
+  }
+  
+  
+  .section-image img {
+    flex: 1 1 auto;  /* allow images to grow proportionally */
+    max-height: 100%;
+    width: auto;      /* keep aspect ratio */
+  }
+  
+  
+
+  .section-first {
+    display: flex;
+    flex-direction: row;       /* text left, images right */
+    align-items: flex-start;   /* top-align text and images */
+    gap: 2rem;
+    padding: 4rem 6vw;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: clamp(1rem, 1.2vw, 1.5rem);
+  
+    position: relative;
+    background-image: url('/images/cirrus-hooks.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+
+  
+  
+  .section-first .section-text {
+    flex: 1;                   /* take space needed by text */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    z-index: 2;
+    position: relative;
+  }
+  
+  /* Foreground images centered */
+  .section-first .section-image {
+    flex: 1;                   /* take remaining space */
+    display: flex;
+    flex-direction: column;     /* stack images vertically */
+    justify-content: flex-start;/* start at top */
+    align-items: center;        /* center horizontally */
+    gap: 1rem;                  /* spacing between images */
+    max-height: 100%;  /* limit container to text height */
+  }
+  
+  .section-first .section-image img {
+    max-height: 100%;           /* won’t exceed height of container */
+    width: auto;                /* keep aspect ratio */
+    display: block;
+    border-radius: 12px;
+  }
+  
+
+  
+  
+  
+  
+  
+  .section-second {
+    display: flex;
+    flex-direction: row;       /* text left, images right */
+    align-items: flex-start;   /* top-align text and images */
+    gap: 2rem;
+    padding: 4rem 6vw;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: clamp(1rem, 1.2vw, 1.5rem);
+  
+    position: relative;
+    background-image: url('/images/earth_background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+
+  
+  
+  .section-secondt .section-text {
+    flex: 1;                   /* take space needed by text */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    z-index: 2;
+    position: relative;
+  }
+  
+  /* Foreground images centered */
+  .section-second .section-image {
+    flex: 1;                   /* take remaining space */
+    display: flex;
+    flex-direction: column;     /* stack images vertically */
+    justify-content: flex-start;/* start at top */
+    align-items: center;        /* center horizontally */
+    gap: 1rem;                  /* spacing between images */
+    max-height: 100%;  /* limit container to text height */
+  }
+  
+  .section-second .section-image img {
+    max-height: 100%;           /* won’t exceed height of container */
+    width: auto;                /* keep aspect ratio */
+    display: block;
+    border-radius: 12px;
+  }
+  
+  
+  .text-bg {
+    background: rgba(0, 19, 32, 0.65); /* semi-transparent dark overlay */
+    backdrop-filter: blur(8px);     /* blur the content behind */
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    padding: 1.5rem 2rem;           /* spacing inside the box */
+    border-radius: 12px;             /* rounded corners */
+    color: white;                    /* text color */
+    max-width: 600px;   
+  }
+
+  .text-bg h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: clamp(1.5rem, 4vw, 2rem); /* scales with viewport width */
+  }
+  
+  .text-bg .pi {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    margin: 0 0 0.25rem 0;
+    
+  }
+  
+  .text-bg .school {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+    margin: 0 0 0.25rem 0;
+  }
+  
+  .text-bg .program {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.7);
+    margin: 0 0 1rem 0;
+  }
+  
+  
+  
+  .poster img {
+    max-width: 100%;   /* allow full width within container */
+    max-height: 20vh;  /* relative to text column height */
+    border-radius: 8px;   /* optional rounded corners */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    cursor: pointer;      /* indicates it’s clickable */
+    transition: transform 0.2s ease;
+  }
+  
+  .poster img:hover {
+    transform: scale(1.02); /* slight zoom on hover */
+  }
+
+  .poster figcaption {
+    font-size: 0.85rem;
+    font-family: inherit;
+    color:rgba(0, 19, 32); /* light for semi-transparent bg */
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+  
