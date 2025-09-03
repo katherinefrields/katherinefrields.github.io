@@ -28,3 +28,9 @@ html, body { margin: 0; padding: 0; background: none; height: 200vh; }
   z-index: 1;
   opacity: 0; /* start hidden */
 }
+
+.page__footer {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+}
