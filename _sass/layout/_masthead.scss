@@ -4,7 +4,7 @@
 
 .masthead {
   position: fixed;
-  background: var(--global-bg-color);
+  background: rgba(0, 19, 32, 0.65);
   height: fit-content;
   top: 0;
   width: 100%;
@@ -36,6 +36,8 @@
 
     nav {
       z-index: 10;
+      background-color: rgba(255, 255, 255, 0);
+      gap: 0.5em;
     }
 
     a {
@@ -44,19 +46,18 @@
   }
 }
 
-.masthead__menu {
-
-  ul {
-    margin: 0;
-    padding: 0;
-    clear: both;
-    list-style-type: none;
-  }
+.masthead__menu ul {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex; // keep buttons in a row
+  gap: 0.5em;    // optional spacing between buttons
 }
 
 .masthead__menu-item {
   border: 1px solid rgba(255, 255, 255, 0); // invisible default border
-  background-color: var(--global-bg-color);
+  background-color: rgba(255, 255, 255, 0);
   transition: $global-transition;
   border-radius: 12px; // squoval only on hover
 

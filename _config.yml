@@ -163,6 +163,7 @@ include:
   - files
   - images
   - assets/images
+  - assets/css
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
