@@ -30,7 +30,15 @@ html, body { margin: 0; padding: 0; background: none; height: 200vh; }
 }
 
 .page__footer {
-  position: sticky;
-  bottom: 0;
-  width: 100%;
+  display: none;            /* hidden by default */
+  text-align: center;
+  padding: 2em;
+  background: var(--global-bg-color);
+  color: var(--global-text-color);
+  transition: opacity 0.5s ease;
+}
+
+.page__footer.visible {
+  display: block;           /* or use opacity for fade-in */
+  opacity: 1;
 }
