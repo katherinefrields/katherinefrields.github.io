@@ -1,7 +1,7 @@
 /* ==========================================================================
    SHARED THEME SETTINGS
    ========================================================================== */
-
+   @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 /* ==========================================================================
    TYPOGRAPHY
    ========================================================================== */
@@ -15,7 +15,7 @@ $indent-var                 : 1.3em;
 
 /* System typefaces */
 $serif                      : Georgia, Times, serif;
-$sans-serif                 : -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+$sans-serif                 : 'Raleway', -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
 $monospace                  : Monaco, Consolas, "Lucida Console", monospace;
 
 /* Sans serif typefaces */

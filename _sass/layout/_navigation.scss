@@ -211,10 +211,17 @@
 
       &:first-child {
         font-weight: bold;
-        text-wrap: wrap;
 
+        display: flex;              // flex container for centering
+        align-items: center;        // vertical centering
+        justify-content: center;    // horizontal centering
+        text-align: center;         // multiline text centering
+    
         a {
-          margin-left: 0;
+          
+          flex: 1;                  // expand link to fill container
+          text-align: center;       // center text inside <a>
+          white-space: normal;      // allow wrapping
         }
       }
 
@@ -252,11 +259,7 @@
                 transform: scaleX(0); /* hide*/
       }
 
-      &:hover:before {
-        -webkit-transform: scaleX(1);
-            -ms-transform: scaleX(1);
-                transform: scaleX(1); /* reveal*/
-      }
+      
     }
   }
 

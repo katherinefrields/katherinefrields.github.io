@@ -55,10 +55,36 @@
 }
 
 .masthead__menu-item {
+  border: 1px solid rgba(255, 255, 255, 0); // invisible default border
   background-color: var(--global-bg-color);
-  display: block;
-  list-style-type: none;
-  white-space: nowrap;
+  transition: $global-transition;
+  border-radius: 12px; // squoval only on hover
+
+  display: flex;
+  align-items: center;   // vertical centering
+  justify-content: center; // horizontal centering
+  text-align: center;      // ensure multiline text is centered
+  height: 100%;    
+  
+  &:hover {
+    background: 
+    linear-gradient(to right,
+      rgba(255, 255, 255, 0.12),   // faint white at left edge
+      rgba(255, 255, 255, 0) 25%, // fade to transparent
+      rgba(255, 255, 255, 0) 75%, // stay clear in middle
+      rgba(255, 255, 255, 0.12)   // faint white at right edge
+    ),
+    linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0) 25%,
+      rgba(255, 255, 255, 0) 75%,
+      rgba(255, 255, 255, 0.12)
+    );
+  border: 1px solid rgba(255, 255, 255, 0.15); // lighter border than before
+  border-radius: 12px;
+  backdrop-filter: blur(8px);      // softer blur
+  -webkit-backdrop-filter: blur(8px);
+  }
 
   &--lg {
     padding-right: 2em;
