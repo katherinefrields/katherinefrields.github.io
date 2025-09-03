@@ -4,8 +4,9 @@
 
 .masthead {
   position: fixed;
-  background: rgba(0, 19, 32, 0.65);
+  background: rgba(0, 19, 32, 0.65);//semitransprent top background
   height: fit-content;
+  backdrop-filter: blur(8px);   
   top: 0;
   width: 100%;
 
@@ -20,7 +21,7 @@
     position: absolute;
     bottom: 0;
     height: 1px;
-    background: var(--global-border-color);
+    background: rgba(0, 19, 32, 0.65);
     width: 100%;
   }
 
@@ -36,8 +37,14 @@
 
     nav {
       z-index: 10;
-      background-color: rgba(255, 255, 255, 0);
+      //backdrop-filter: blur(8px);   //blur for the top banner
+      //background-color: rgba(255, 255, 255, 0);
       gap: 0.5em;
+      background: transparent !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border: none !important;
+      box-shadow: none !important;
     }
 
     a {
@@ -47,19 +54,23 @@
 }
 
 .masthead__menu ul {
-  background: none;
-  border: none;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   padding: 0;
   margin: 0;
   display: flex; // keep buttons in a row
-  gap: 0.5em;    // optional spacing between buttons
+  gap: 0.5em;    // spacing between buttons
 }
 
 .masthead__menu-item {
-  border: 1px solid rgba(255, 255, 255, 0); // invisible default border
-  background-color: rgba(255, 255, 255, 0);
-  transition: $global-transition;
-  border-radius: 12px; // squoval only on hover
+  //border: 1px solid rgba(255, 255, 255, 0); // invisible default border
+  background: transparent;   // start transparent
+  border: none;              // no border box initially
+  border-radius: 12px;
+  transition: background 0.3s ease, border 0.3s ease;
 
   display: flex;
   align-items: center;   // vertical centering
