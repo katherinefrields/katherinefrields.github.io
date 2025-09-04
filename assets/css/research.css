@@ -126,7 +126,7 @@ body {
     font-size: clamp(1rem, 1.2vw, 1.5rem);
   
     position: relative;
-    background-image: url('/images/earth_background.jpg');
+    background-image: url('/images/tech-background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -156,6 +156,52 @@ body {
   }
   
   .section-second .section-image img {
+    max-height: 100%;           /* won’t exceed height of container */
+    width: auto;                /* keep aspect ratio */
+    display: block;
+    border-radius: 12px;
+  }
+  
+
+  .section-third {
+    display: flex;
+    flex-direction: row;       /* text left, images right */
+    align-items: flex-start;   /* top-align text and images */
+    gap: 2rem;
+    padding: 4rem 6vw;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: clamp(1rem, 1.2vw, 1.5rem);
+  
+    position: relative;
+    background-image: url('/images/high_res_earth.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .section-third .section-text {
+    flex: 1;                   /* take space needed by text */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    z-index: 2;
+    position: relative;
+  }
+  
+  /* Foreground images centered */
+  .section-third .section-image {
+    flex: 1;                   /* take remaining space */
+    display: flex;
+    flex-direction: column;     /* stack images vertically */
+    justify-content: flex-start;/* start at top */
+    align-items: center;        /* center horizontally */
+    gap: 1rem;                  /* spacing between images */
+    max-height: 100%;  /* limit container to text height */
+  }
+  
+  .section-third .section-image img {
     max-height: 100%;           /* won’t exceed height of container */
     width: auto;                /* keep aspect ratio */
     display: block;
