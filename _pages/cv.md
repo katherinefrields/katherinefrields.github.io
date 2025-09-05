@@ -45,7 +45,7 @@ Experience
   <p style="margin: 0;">New York, NY</p>
 </div>
 - Developed diffusion model to generate diverse and realistic thermodynamic back trajectories based on in-situ ice crystal images in cirrus clouds  
-- Performed robust analysis of the relationship between thermodynamic trajectory and crystal morphology utilizing dynamic time warp clustering and CNN classification model  
+- Performed robust analysis of the relationship between thermodynamic trajectory and crystal morphology utilizing a CNN and explainable AI techniques
 
 <div style="display: flex; justify-content: space-between; margin: 0;">
   <p style="margin: 0; font-size: 1.1em;">
