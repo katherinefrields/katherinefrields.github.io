@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2025-09-05T04:52:37+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Katherine Frields</title><subtitle>Undergraduate Climate Data Science Researcher | UCI Data Science B.S &amp; Earth System Science B.S</subtitle><author><name>Katherine Frields</name><email>frieldskatherine@gmail.com</email></author><entry><title type="html">The Math behind Diffusion Models</title><link href="http://0.0.0.0:4000/posts/2015/08/blog-post-1/" rel="alternate" type="text/html" title="The Math behind Diffusion Models" /><published>2025-08-19T00:00:00+00:00</published><updated>2025-08-19T00:00:00+00:00</updated><id>http://0.0.0.0:4000/posts/2015/08/blog-post-1</id><content type="html" xml:base="http://0.0.0.0:4000/posts/2015/08/blog-post-1/"><![CDATA[<!--Notation
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://0.0.0.0:4000/katherinefrields.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/katherinefrields.github.io/" rel="alternate" type="text/html" /><updated>2025-09-05T05:05:04+00:00</updated><id>http://0.0.0.0:4000/katherinefrields.github.io/feed.xml</id><title type="html">Katherine Frields</title><subtitle>Undergraduate Climate Data Science Researcher | UCI Data Science B.S &amp; Earth System Science B.S</subtitle><author><name>Katherine Frields</name><email>frieldskatherine@gmail.com</email></author><entry><title type="html">The Math behind Diffusion Models</title><link href="http://0.0.0.0:4000/katherinefrields.github.io/posts/2015/08/blog-post-1/" rel="alternate" type="text/html" title="The Math behind Diffusion Models" /><published>2025-08-19T00:00:00+00:00</published><updated>2025-08-19T00:00:00+00:00</updated><id>http://0.0.0.0:4000/katherinefrields.github.io/posts/2015/08/blog-post-1</id><content type="html" xml:base="http://0.0.0.0:4000/katherinefrields.github.io/posts/2015/08/blog-post-1/"><![CDATA[<!--Notation
 ======-->
 
 <p>Given a set of data \({x_1, x_2, ..., x_N}\), defined by the underlying data distribution q(x), our goal is
@@ -42,7 +42,7 @@ s_{\theta}(x) &amp;= \frac{\partial log(p_{\theta}(x))}{\partial x}\\
 computationally feasible for high-dimensional data</p>
 
 <figure class="centered-figure">
-  <img src="/assets/images/smld.png" alt="Score-based generative modeling with score matching + Langevin dynamics" />
+  <img src="katherinefrields.github.io/assets/images/smld.png" alt="Score-based generative modeling with score matching + Langevin dynamics" />
   <figcaption style="text-align: center;">(Fig 1: Score-based generative modeling with score matching + Langevin dynamics [5])</figcaption>
 </figure>
 
@@ -138,7 +138,7 @@ L _ {\{ \sigma _i \} ^ L _{i=1}}(\theta) = \frac {1}{L} \sum_{i=1}^L {\lambda (\
 <p>Thus, we use the following sampling algorithm. We start with our prior \(\tilde{x} _0\), which is drawn from a standard normal distribution. We then loop through all our noise levels and use them to define our step \(\alpha _i\), which decreases as \(\sigma _i \rightarrow \sigma _L\). This is equivalent to sampling from \(q _ {\sigma _1}\) to \(q _ {\sigma _2}\) all the way to \(q _ {\sigma _L}\), which is equivalent to q(x).</p>
 
 <figure class="centered-figure">
-  <img src="/assets/images/NCSN_langevin_annealing_alg.png" alt="Annealed Langevin dynamic Sampling Algorithm" style="width: 50%; height: auto;" />
+  <img src="katherinefrields.github.io/assets/images/NCSN_langevin_annealing_alg.png" alt="Annealed Langevin dynamic Sampling Algorithm" style="width: 50%; height: auto;" />
   <figcaption style="text-align: center;">
     (Fig 4: Annealed Langevin Dynamic Sampling Algorithm [1])
   </figcaption>
@@ -159,7 +159,7 @@ and produce accurate, and efficient samples from q(x).</p>
 <p>Denoising Diffusion Probability Models operate by using a markov chain \(q(x_t \mid x_{t-1})\) to continually add noise to a known data point x, in a process known as forwarddiffusion. We then training a model to predict the reverse markov chain \(q(x_{t-1} \mid x_t)\), by learning the parameterized function \(p_{\theta}(x_{t-1} \mid x_t)\), in a process known as reverse diffusion [3].</p>
 
 <figure class="centered-figure">
-  <img src="/assets/images/reverse-diffusion.png" alt="DDPM Forward and Reverse Diffusion" />
+  <img src="katherinefrields.github.io/assets/images/reverse-diffusion.png" alt="DDPM Forward and Reverse Diffusion" />
   <figcaption style="text-align: center;">
     (Fig 6:DDPM Forward and Reverse Diffusion [https://theaisummer.com/diffusion-models/])
   </figcaption>
@@ -185,7 +185,7 @@ will end up with our target distribution \(\pi (y)\). In our case, this noising 
 <p>In order to efficiently sample when performing forward diffusion, we leverage the reparameterization trick.</p>
 
 <figure class="centered-figure">
-  <img src="/assets/images/reparam_technique.png" alt="DDPM Forward and Reverse Diffusion" />
+  <img src="katherinefrields.github.io/assets/images/reparam_technique.png" alt="DDPM Forward and Reverse Diffusion" />
   <figcaption style="text-align: center;">
     (Fig 8:Reparameterization technique [https://roysubhradip.hashnode.dev/a-beginners-guide-to-diffusion-models-understanding-the-basics-and-beyond])
   </figcaption>
@@ -404,14 +404,14 @@ Why does the score funciton point towards the area of density
 decide on notation (explicitly specifying parameters to a function like xt ?) using semicolon after variable the distribution describes? M, Standard Dev, or variance
 
 
--->]]></content><author><name>Katherine Frields</name><email>frieldskatherine@gmail.com</email></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">A Soft Introduction to Stochastic-Machine Learning Parametrisation for Climate Modelling</title><link href="http://0.0.0.0:4000/posts/2013/08/blog-post-2/" rel="alternate" type="text/html" title="A Soft Introduction to Stochastic-Machine Learning Parametrisation for Climate Modelling" /><published>2025-05-25T00:00:00+00:00</published><updated>2025-05-25T00:00:00+00:00</updated><id>http://0.0.0.0:4000/posts/2013/08/blog-post-2</id><content type="html" xml:base="http://0.0.0.0:4000/posts/2013/08/blog-post-2/"><![CDATA[<p>Ever growing in scientific and political importance, climate modeling serves as a critical tool in society’s battle against, and adaptation to, global climate change. To understand the present and the future of this field we must understand the role of physics, stochasticity, and increasingly, machine learning, in how we can predict our climate’s potential futures.</p>
+-->]]></content><author><name>Katherine Frields</name><email>frieldskatherine@gmail.com</email></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">A Soft Introduction to Stochastic-Machine Learning Parametrisation for Climate Modelling</title><link href="http://0.0.0.0:4000/katherinefrields.github.io/posts/2013/08/blog-post-2/" rel="alternate" type="text/html" title="A Soft Introduction to Stochastic-Machine Learning Parametrisation for Climate Modelling" /><published>2025-05-25T00:00:00+00:00</published><updated>2025-05-25T00:00:00+00:00</updated><id>http://0.0.0.0:4000/katherinefrields.github.io/posts/2013/08/blog-post-2</id><content type="html" xml:base="http://0.0.0.0:4000/katherinefrields.github.io/posts/2013/08/blog-post-2/"><![CDATA[<p>Ever growing in scientific and political importance, climate modeling serves as a critical tool in society’s battle against, and adaptation to, global climate change. To understand the present and the future of this field we must understand the role of physics, stochasticity, and increasingly, machine learning, in how we can predict our climate’s potential futures.</p>
 
 <h2 id="traditional-approaches">Traditional Approaches</h2>
 
 <p>Traditional climate models rely heavily on physics to model the interaction between Earth’s oceans, atmosphere, and human society. The earth is first separated into grid cells, each containing one column of ocean, earth, and atmosphere. The state variables of each cell (ie. humidity, temperature, wind speed) are used as input into the dynamical core, which solves the physical equations governing the motion of fluid in the atmosphere, moving the model forward one time step (Christensen et al., 2024).</p>
 
 <figure class="centered-figure">
-  <img src="/images/stochastic_param_iamge.png" alt="Score-based generative modeling with score matching + Langevin dynamics" />
+  <img src="katherinefrields.github.io/images/stochastic_param_iamge.png" alt="Score-based generative modeling with score matching + Langevin dynamics" />
   <figcaption style="text-align: center;">(Typically, cells are divided laterally, but extend vertically along the length of the column, with different states at each level of elevation. Adapted from “Climate goals and computing the future of clouds” by Schneider et al., 2017, Nature Climate Change, 7, 3–5.)</figcaption>
 </figure>
 
