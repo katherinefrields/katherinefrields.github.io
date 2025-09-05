@@ -14,7 +14,9 @@ layout: default
   {% endunless %}
 {% endif %}
 
-<link rel="stylesheet" href="/assets/css/custom.css">
+<!-- <link rel="stylesheet" href="/assets/css/custom.css">-->
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+
 
 <div id="main" role="main">
 
