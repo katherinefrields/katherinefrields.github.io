@@ -72,7 +72,7 @@
   <meta property="og:type" content="article">
 
 
-  <meta property="og:description" name="description" content="Notation">
+  <meta property="og:description" name="description" content="">
 
 
   <meta property="og:url" content="http://0.0.0.0:4000/posts/2015/08/blog-post-1/">
@@ -142,12 +142,10 @@
             
             <li class="masthead__menu-item"><a href="http://0.0.0.0:4000/cv/">CV</a></li>
           
-            
-            <li class="masthead__menu-item"><a href="http://0.0.0.0:4000/markdown/">Guide</a></li>
-          
+          <!--
           <li id="theme-toggle" class="masthead__menu-item persist tail">
             <a role="button" aria-labelledby="theme-icon"><i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i></a>
-          </li>
+          </li>-->
         </ul>
         <ul class="hidden-links hidden"></ul>
       </nav>
@@ -165,101 +163,10 @@
   
 
 
-  <div class="sidebar sticky">
-  
-
-
-
-<div itemscope itemtype="http://schema.org/Person">
-
-  <div class="author__avatar">
-    
-    	<img src="http://0.0.0.0:4000/images/profile.png" class="author__avatar" alt="Katherine Frields"  fetchpriority="high" />
-    
-  </div>
-
-  <div class="author__content">
-    <h3 class="author__name">Katherine Frields</h3>
-    
-    <p class="author__bio">UCI Data Science B.S & Earth System Science B.S | LEAP REU Student</p>
-  </div>
-
-  <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
-    <ul class="author__urls social-icons">
-      <!-- Font Awesome icons / Biographic information  -->
-      
-        <li class="author__desktop"><i class="fas fa-fw fa-location-dot icon-pad-right" aria-hidden="true"></i>Irvine, California</li>
-      
-      
-        <li class="author__desktop"><i class="fas fa-fw fa-building-columns icon-pad-right" aria-hidden="true"></i>UC Irvine</li>
-      
-      
-      
-        <li><a href="mailto:frieldskatherine@gmail.com"><i class="fas fa-fw fa-envelope icon-pad-right" aria-hidden="true"></i>Email</a></li>
-      
-
-      <!-- Font Awesome and Academicons icons / Academic websites -->
-      
-            
-      
-      
-      
-      
-                              
-      
-      
-      
-
-      <!-- Font Awesome icons / Repositories and software development -->
-      
-            
-            
-      
-        <li><a href="https://github.com/academicpages"><i class="fab fa-fw fa-github icon-pad-right" aria-hidden="true"></i>GitHub</a></li>
-      
-            
-            
-
-      <!-- Font Awesome icons / Social media -->
-              
-      
-        <li><a href="https://bsky.app/profile/@katherinefrields.bsky.social"><i class="fab fa-fw fa-bluesky icon-pad-right" aria-hidden="true"></i>Bluesky</a></li>
-      
-      
-            
-      
-                  
-                  
-      
-            
-            
-            
-      
-            
-                  
-            
-      
-            
-            
-      
-              
-      
-                      
-      
-      
-            
-    </ul>
-  </div>
-</div>
-
-  
-  </div>
-
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="The Math behind Diffusion Models">
-    <meta itemprop="description" content="Notation">
+    <meta itemprop="description" content="">
     <meta itemprop="datePublished" content="August 19, 2025">
     
 
@@ -273,7 +180,7 @@
 
 
   
-	  16 minute read
+	  17 minute read
 	
 </p>
           
@@ -286,7 +193,8 @@
       
 
       <section class="page__content" itemprop="text">
-        <h1 id="notation">Notation</h1>
+        <!--Notation
+======-->
 
 <p>Given a set of data \({x_1, x_2, ..., x_N}\), defined by the underlying data distribution q(x), our goal is
 to synthesize new samples from q(x). However, q(x) is unknown and can not be directly computed. Therefore, we instead
@@ -301,7 +209,7 @@ p_{\theta}(x) &amp;: \text {Predicted pdf, parameterized by }\theta
 
 <h2 id="score-function">Score Function</h2>
 <p>Rather than train a model to predict the \(p_{\theta}(x)\) directly, we instead train a model to predict the log gradient, 
-also known as the score \(s_{\theta}(x)\). When the gradient is positive, it means we’re moving closer to a denser region, and when the gradient is positive it means we’re moving towards a less dense region. The log is taken in order to normalize very small or large values, reducing roundoff error during computation.</p>
+also known as the score \(s_{\theta}(x)\) [2]. When the gradient is positive, it means we’re moving closer to a denser region, and when the gradient is positive it means we’re moving towards a less dense region. The log is taken in order to normalize very small or large values, reducing roundoff error during computation.</p>
 
 \[s_{\theta}(x) = \nabla _x log (p_{\theta}(x)) = \frac{\partial log(p_{\theta}(x))}{\partial x}\]
 
@@ -334,7 +242,7 @@ computationally feasible for high-dimensional data</p>
 </figure>
 
 <h2 id="denoising-score-matching">Denoising Score Matching</h2>
-<p>In order to train our score function without access to \(\nabla _x log (q(x))\), we can use a method known as desnoising score matching. Denoising score matching functions by first adding noise to our data then training the model to remove the noise.</p>
+<p>In order to train our score function without access to \(\nabla _x log (q(x))\), we can use a method known as desnoising score matching. Denoising score matching functions by first adding noise to our data then training the model to remove the noise [1].</p>
 
 <p>We start by defining our noising function</p>
 
@@ -382,7 +290,7 @@ a small amount of new gaussian noise.</p>
 <figure class="centered-figure">
   <img src="https://yang-song.net/assets/img/score/langevin.gif" alt="Langevin dynamics illustration" style="width: 60%; height: auto;" />
   <figcaption style="text-align: center;">
-    Figure 2: Langevin dynamics illustration
+    Fig 2: Langevin dynamics illustration
   </figcaption>
 </figure>
 
@@ -398,7 +306,7 @@ a small amount of new gaussian noise.</p>
 <figure class="centered-figure">
   <img src="https://yang-song.net/assets/img/score/pitfalls.jpg" alt="Pitfalls in score-based generative modeling" />
   <figcaption style="text-align: center;">
-    Figure 2: Pitfalls in score-based generative modeling
+    Fig 3: Pitfalls in score-based generative modeling
   </figcaption>
 </figure>
 
@@ -420,14 +328,14 @@ l_{\sigma}(\theta) &amp;= E_{\tilde{x} \sim q_{\sigma}(\tilde{x} \mid x)}[\frac{
 L _ {\{ \sigma _i \} ^ L _{i=1}}(\theta) = \frac {1}{L} \sum_{i=1}^L {\lambda (\sigma _i) l _ {\sigma}(\theta)}
 \end{aligned}\]
 
-<p>There are many possible choices of \(\lambda\). In our case we chose \(\lambda = \sigma _i ^2\).</p>
+<p>There are many possible choices of \(\lambda\). In our case we chose \(\lambda = \sigma _i ^2\)</p>
 
 <p>Thus, we use the following sampling algorithm. We start with our prior \(\tilde{x} _0\), which is drawn from a standard normal distribution. We then loop through all our noise levels and use them to define our step \(\alpha _i\), which decreases as \(\sigma _i \rightarrow \sigma _L\). This is equivalent to sampling from \(q _ {\sigma _1}\) to \(q _ {\sigma _2}\) all the way to \(q _ {\sigma _L}\), which is equivalent to q(x).</p>
 
 <figure class="centered-figure">
   <img src="/assets/images/NCSN_langevin_annealing_alg.png" alt="Annealed Langevin dynamic Sampling Algorithm" style="width: 50%; height: auto;" />
   <figcaption style="text-align: center;">
-    (Fig 2: Annealed Langevin Dynamic Sampling Algorithm [1])
+    (Fig 4: Annealed Langevin Dynamic Sampling Algorithm [1])
   </figcaption>
 </figure>
 
@@ -437,18 +345,18 @@ and produce accurate, and efficient samples from q(x).</p>
 <figure class="centered-figure">
   <img src="https://yang-song.net/assets/img/score/ald.gif" alt="ALD Illustration" />
   <figcaption style="text-align: center;">
-    Figure: NCSN Annealed Langevin Dyamic Sampling (note that the numbering of i-noise levels is reversed in this figure) [5].
+    Fig 5: NCSN Annealed Langevin Dyamic Sampling (note that the numbering of i-noise levels is reversed in this figure) [5].
   </figcaption>
 </figure>
 
 <h1 id="denoising-diffusionprobability-model-ddpm">Denoising DiffusionProbability Model (DDPM)</h1>
 
-<p>Denoising Diffusion Probability Models operate by using a markov chain \(q(x_t \mid x_{t-1})\) to continually add noise to a known data point x, in a process known as forwarddiffusion. We then training a model to predict the reverse markov chain \(q(x_{t-1} \mid x_t)\), by learning the parameterized function \(p_{\theta}(x_{t-1} \mid x_t)\), in a process known as reverse diffusion.</p>
+<p>Denoising Diffusion Probability Models operate by using a markov chain \(q(x_t \mid x_{t-1})\) to continually add noise to a known data point x, in a process known as forwarddiffusion. We then training a model to predict the reverse markov chain \(q(x_{t-1} \mid x_t)\), by learning the parameterized function \(p_{\theta}(x_{t-1} \mid x_t)\), in a process known as reverse diffusion [3].</p>
 
 <figure class="centered-figure">
   <img src="/assets/images/reverse-diffusion.png" alt="DDPM Forward and Reverse Diffusion" />
   <figcaption style="text-align: center;">
-    (Fig 2:DDPM Forward and Reverse Diffusion [https://theaisummer.com/diffusion-models/])
+    (Fig 6:DDPM Forward and Reverse Diffusion [https://theaisummer.com/diffusion-models/])
   </figcaption>
 </figure>
 
@@ -459,20 +367,13 @@ and produce accurate, and efficient samples from q(x).</p>
 \[q(x_t \mid x_{t-1}) =  N(x^t ; x^{t-1}\sqrt{(1- \beta ^ t)}, I \beta ^ t)\]
 
 <p>By sequentially multiplying our initial distribution \(q(x^0)\)  by this Markov kernel, we 
-will end up with our target distribution \(\pi (y)\). Thus, we can define each step in our forward 
-trajectory by this Markov kernel.</p>
-
-\[\begin{aligned}
-q(x_t \mid x_{t-1}) = N(x_t ; x_{t-1} \sqrt{(1-\beta _ t)}, I\beta _ t)
-\end{aligned}\]
-
-<p>This noising process continues until \(x_{t-1} \sqrt{(1-\beta _ t)}\) is near 0, and 
+will end up with our target distribution \(\pi (y)\). In our case, this noising process continues until \(x_{t-1} \sqrt{(1-\beta _ t)}\) is near 0, and 
 \(\beta _ t\) is near 1. The exact value of \(\beta\) is controlled by a variance schedule, which is typically linear.</p>
 
 <figure class="centered-figure">
   <img src="https://learnopencv.com/wp-content/uploads/2023/02/denoising-diffusion-probabilistic-models_forward_diffusion_variance_scheduler.png" alt="Example Variance Schedule" />
   <figcaption style="text-align: center;">
-    Figure: Example Variance Schedule [https://learnopencv.com/denoising-diffusion-probabilistic-models/].
+    Fig  7: Example Variance Schedule [https://learnopencv.com/denoising-diffusion-probabilistic-models/].
   </figcaption>
 </figure>
 
@@ -481,11 +382,15 @@ q(x_t \mid x_{t-1}) = N(x_t ; x_{t-1} \sqrt{(1-\beta _ t)}, I\beta _ t)
 <figure class="centered-figure">
   <img src="/assets/images/reparam_technique.png" alt="DDPM Forward and Reverse Diffusion" />
   <figcaption style="text-align: center;">
-    (Fig 2:Reparameterization technique [https://roysubhradip.hashnode.dev/a-beginners-guide-to-diffusion-models-understanding-the-basics-and-beyond])
+    (Fig 8:Reparameterization technique [https://roysubhradip.hashnode.dev/a-beginners-guide-to-diffusion-models-understanding-the-basics-and-beyond])
   </figcaption>
 </figure>
 
-<p>This results in the closed form \(x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1-\bar{\alpha}_t}\epsilon\)</p>
+<p>This results in the closed form</p>
+
+<p>\(x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1-\bar{\alpha}_t}\epsilon, \epsilon \sim N(0,1)\).</p>
+
+<p>We can use this closed form to draw samples from our intermediate distributions</p>
 
 <p>The full forward trajectory is defined by the joint distribution of our timesteps.</p>
 
@@ -494,17 +399,22 @@ q(x_1, x_2,...,x_t) = q(x_{0...T}) = q(x_0)\prod_{t=1}^T q(x_t \mid x_{t-1})
 \end{aligned}\]
 
 <h2 id="reverse-diffusion">Reverse Diffusion</h2>
-<p>We want to know \(q(x_{t-1} \mid x_t)\), but the equation is analytically intractable as it would require integrating over the entire space x. Thus, we instead train \(p(x_{t-1} \mid x_t)\) to approximate the function.</p>
+<p>We want to know \(q(x_{t-1} \mid x_t)\), but the distribution is analytically intractable as it would require integrating over the entire space x. Thus, we instead train \(p(x_{t-1} \mid x_t)\) to approximate the function.</p>
 
 \[p(x_{t-1}│x_t) = N(x_{t-1}; \mu _{\theta}(x_t, t), \Sigma _ \theta (x_t, t))\]
 
-<p>Where \(\mu _{\theta}(x_t, t)\) is the parameterized mean of our distribution and \(\Sigma _ \theta (x_t, t)\) is the variance. The full reverse trajectory is defined by the joint distribution of our timesteps</p>
+<p>Where \(\mu _{\theta}(x_t, t)\) is the parameterized mean of our distribution and \(\Sigma _ \theta (x_t, t)\) is the variance.</p>
+
+<p>To initialize \(p_ \theta (x_{t-1} \mid x_t)\), we set  \(\Sigma _ \theta (x _t, t) = \sigma _t ^ 2 I\). Though there are many diferent choices of \(\sigma _t ^2,\) as a rule of thumb</p>
+
+<p>If \(x_0 \sim N(0,1)\), we set \(\sigma _t ^ 2 = \beta _t ^ 2\)   <br />
+If \(x_0\) is set to one point, we set \(\sigma _t ^ 2 = \tilde{\beta} _t ^ 2 = \frac{1- \bar{\alpha}_{t-1}}{1-\bar{\alpha}_t}\beta _t\)</p>
+
+<p>In our case, we set \(\sigma _t ^ 2 = \beta _t ^ 2\), where \(\beta\) has a fixed schedule.</p>
+
+<p>The full reverse trajectory is defined by the joint distribution of our timesteps</p>
 
 \[p(x_1, x_2,...,x_t) = p(x_{0...T}) = p(x_0)\prod_{t=1}^T p(x_t \mid x_{t-1})\]
-
-<p>To initialize \(p_ \theta (x_{t-1} \mid x_t)\), we set  \(\Sigma _ \theta (x _t, t) = \sigma _t ^ 2 I\).  <br />
-If \(x_0 \sim N(0,1)\), we set \(\sigma _t ^ 2 = \beta _t ^ 2\)   <br />
-If \(x_0\) is set to one point, we set \(\sigma _t ^ 2 = \tilde{\beta} _t ^ 2 = \frac{1- \bar{\alpha}_{t-1}}{1-\bar{\alpha}_t}\beta _t\)</p>
 
 <h2 id="training">Training</h2>
 <p>To train our function \(p_ \theta (x_{t-1} \mid x_t)\), we must determine an objective funciton which measures the distance beteween  \(p_ \theta (x_{t-1} \mid x_t)\) and  \(q (x_{t-1} \mid x_t)\). To do so, we use KL Divergence and derive the Evidence Lower Bound (ELBO).</p>
@@ -522,28 +432,30 @@ where q(x) is the true probability distribution and p(x) is the predicted distri
   <p><strong>Evidence Lower Bound (ELBO):</strong><br />
 ELBO uses the KL divergence between true and predicted conditional distributions to define the lower bound 
 \(\begin{aligned} 
-D_{KL}(q||p) &amp;= \int q(z|x)log(\frac{q(z|x)}{p(z|x)}) \\
+D_{KL}(q(z|x)||p(z|x)) &amp;= \int q(z|x)log(\frac{q(z|x)}{p(z|x)}) \\
 &amp;= \int q(z|x)log({q(z|x)}) - \int q(z|x)log({p(z|x)}) \\
 &amp;= \int q(z|x)log({q(z|x)}) - \int q(z|x)log(\frac{p(z,x)}{p(x)}) \\
 &amp;= \int q(z|x)log({q(z|x)}) - \int q(z|x)log({p(z,x)}) + \int q(z|x)log({p(x)}) \\
 &amp;=  E_{z\sim q}[log({q(z|x)})] - E_{z\sim q}[log({p(z,x)})] + log({p(x)})\int q(z|x) \\
 &amp;=  E_{z\sim q}[log({q(z|x)})] - E_{z\sim q}[log({p(z,x)})] + log({p(x)}) \\
-log({p(x)}) &amp;= D_{KL}(q||p) -  E_{z\sim q}[log({q(z|x)})] + E_{z\sim q}[log({p(z,x)})] \\
+log({p(x)}) &amp;= D_{KL}(q(z|x)||p(z|x)) -  E_{z\sim q}[log({q(z|x)})] + E_{z\sim q}[log({p(z,x)})] \\
 \end{aligned}\)</p>
 
   <p>Since KL divergence is always &gt;0</p>
 
 \[log({p(x)}) \geq -  \underbrace{E_{z\sim q}[log({q(z|x)})] + E_{z\sim q}[log({p(z,x)})]}_{\text{ELBO}}\]
 
-  <p>Since the log likelihood of p will remain constant, by minimizing the 
+  <p>Since the log likelihood of p will remain constant for a given x, by minimizing the 
 right hand terms you indirectly minimize the KL Divergence.</p>
 </blockquote>
 
-<p>Training optimizes the variational bound on the negative log likelihood by stochastic gradient descent.</p>
+<p>Thus, we can train our model to minimize the KL Divergence  \(D_{KL}(q(x_{1...T}|x_0)||p(x_{1...T}|x_0))\).
+Thereby minimizing the distance between the true and predicted reverse trajectories for a given image \(x_0\).
+This is also equivalent to maximizing the the probability of \(p(x_0)\) given \(x_0 \sim q\).</p>
 
 \[\begin{aligned}
- E_{x\sim q}[log({p(x)})] &amp;\geq -  E_{x\sim q}[log({q(x_{1...T}|x_0)})] + E_{x\sim q}[log({p(x_0,x_{1...T})})]\\   
- E_{x\sim q}[-log({p(x)}]) &amp;\leq  E_{x\sim q}[log({q(x_{1...T}|x_0)})] - E_{x\sim q}[log({p(x_0,x_{1...T})})]\\   
+ E_{x\sim q}[log({p(x_0)})] &amp;\geq -  E_{x\sim q}[log({q(x_{1...T}|x_0)})] + E_{x\sim q}[log({p(x_0,x_{1...T})})]\\   
+ E_{x\sim q}[-log({p(x_0)}]) &amp;\leq  E_{x\sim q}[log({q(x_{1...T}|x_0)})] - E_{x\sim q}[log({p(x_0,x_{1...T})})]\\   
 &amp;=  E_{x\sim q}[-log(\frac{p(x_0,x_{1...T})}{q(x_{1...T}|x_0)})]\\
 &amp;=  E_{x\sim q}[-log(\frac{p(x_T)\prod_{t=1}^{T}p(x_{t-1}|x_t)} {\prod_{t=1}^{T}q(x_{t}|x_{t-1})})]\\
 &amp;=  E_{x\sim q}[-log(p(x_T)) -\sum_{t=1}^{T}log(\frac{p(x_{t-1}|x_t)}{q(x_t|x_{t-1})})]\\
@@ -554,9 +466,15 @@ right hand terms you indirectly minimize the KL Divergence.</p>
 &amp;=  E_{x\sim q}[-log(p(x_T)) -\sum_{t=2}^{T}log(\frac{p(x_{t-1}|x_t)}{q(x_{t-1}|x_t, x_0)}) - log(\frac{q(x_1|x_0)}{q(x_T|x_0)}) + log(q(x_1|x_0)) - log(p(x_0|x_1)) ]\\
 &amp;=  E_{x\sim q}[-log(p(x_T)) -\sum_{t=2}^{T}log(\frac{p(x_{t-1}|x_t)}{q(x_{t-1}|x_t, x_0)}) - log(\frac{1}{q(x_T|x_0)}) - log(p(x_0|x_1)) ]\\
 &amp;=  E_{x\sim q}[\frac{-log(p(x_T))}{q(x_T|x_0)} -\sum_{t=2}^{T}log(\frac{p(x_{t-1}|x_t)}{q(x_{t-1}|x_t, x_0)}) - log(p(x_0|x_1)) ]\\
-&amp;= E_{x\sim q}{\underbrace{D_{KL}(q(x_T|x_0)||p(x_T))}_{L_T} + \sum_{t=2}^{T}\underbrace{D_{KL}(q(x_{t-1}|x_t, x_0)||p(x_{t-1}|x_t))}_{L_{T-1}} - log(p(x_0|x_1))}
+&amp;= E_{x\sim q}{\underbrace{D_{KL}(q(x_T|x_0)||p(x_T))}_{L_T} + \sum_{t=2}^{T}\underbrace{D_{KL}(q(x_{t-1}|x_t, x_0)||p(x_{t-1}|x_t))}_{L_{T-1}} - \underbrace{log(p(x_0|x_1))}_{L_0}}
 \end{aligned}\]
 
+<p>This simplified expression seperates out our terms into \(L_T\), \(L_{T-1}\), and \(L_0\). Our \(L_T\) term is made up of our forward diffusion \(q(x_T \mid x_0)\) and our prior distribution \(p(x_T)\). Since both of these are known, we can ignore \(L_T\) when training.
+Thus what remains is training a model to minimize \(L_{T-1}\). Since \(L_{T-1}\) is the the KL divergence between \(q(x_{t-1}|x_t, x_0)||p(x_{t-1}|x_t)\) and we have fixed the variance of each to be \(\beta _t\), minimizing the KL divergence is equivalent to minimzing the distance between their means.</p>
+
+<p>Thus, we aim to define the mean of \(q(x_{t-1} \mid x_t, x_0)\).</p>
+
+<!--Additionally, $$L_0$$ can be trained using a simple neural network. FINISH THISSSS-->
 <blockquote>
   <p><strong>Gaussian Distribution:</strong><br />
 Let \(x \sim N(\mu, \sigma)\). We can then define the pdf as:
@@ -567,8 +485,6 @@ f(x) &amp;= \frac{exp(-\frac{1}{2}(\frac{x- \mu}{\sigma})^2)}{\sigma \sqrt{2\pi}
 \end{aligned}\)</p>
 
 </blockquote>
-
-<p>To continue, we must first define \(q(x_{t-1}\mid x_t, x_0)\)</p>
 
 \[\begin{aligned}
 q(x_{t-1}|x_t, x_0) &amp;= q(x_t | x_{t-1}, x_0)\frac{q(x_t-1 | x_0)}{q(x_t | x_0)}\\
@@ -587,21 +503,19 @@ q(x_{t-1}|x_t, x_0) &amp;= q(x_t | x_{t-1}, x_0)\frac{q(x_t-1 | x_0)}{q(x_t | x_
 
 <p>Since our collection of terms \(C(x_t, x_0)\) does not contain \(x_{t-1}\), we can treat it as a constant and ignore it.</p>
 
-<p>Now, to rewrite this as a normal distribution, we must identify the mean and variance of our distribution. According to the Normal PDF described earlier, we expect out \(x^2\) term to have a coefficient of 1 and our x term to have a coefficient of \(-2\mu\).</p>
-
-<p>To satifsy this constrain, we can define our variance as:</p>
+<p>Now, to rewrite this as a normal distribution, we must identify the mean and variance of our distribution. According to the Normal PDF described earlier, we expect our \(x^2\) term to have a coefficient of 1 and our x term to have a coefficient of \(-2\mu\). To satifsy this constrain, we can define our variance as:</p>
 
 \[\tilde{\beta}_t = (\frac{\alpha _t}{\beta _t} + \frac {1}{1-\bar{\alpha}_{t-1}})^{-1}\]
 
 \[\begin{aligned}
-q(x_{t-1}|x_t, x_0) &amp;= \exp [-\frac{1}{2}[x^2 _{t-1} - (\frac{2\sqrt{\alpha _t} x_t}{\beta _t} + \frac{2\sqrt{\bar{\alpha}_{t-1}}x_0}{1-\bar{\alpha}_{t-1}})x_{t-1}]]\\
-&amp;= \exp [-\frac{1}{2}[\frac{x^2 _{t-1} - (\frac{\alpha _t}{\beta _t} + \frac {1}{1-\bar{\alpha}_{t-1}})^{-1}(\frac{2\sqrt{\alpha _t} x_t}{\beta _t} + \frac{2\sqrt{\bar{\alpha}_{t-1}}x_0}{1-\bar{\alpha}_{t-1}})x_{t-1}}{(\frac{\alpha _t}{\beta _t} + \frac {1}{1-\bar{\alpha}_{t-1}})^{-1}}]]
+q(x_{t-1}|x_t, x_0) &amp;= \exp [-\frac{1}{2}[ \frac{x^2 _{t-1}}{\tilde{\beta} _t} - (\frac{2\sqrt{\alpha _t} x_t}{\beta _t} + \frac{2\sqrt{\bar{\alpha}_{t-1}}x_0}{1-\bar{\alpha}_{t-1}})x_{t-1}]]\\
+&amp;= \exp [-\frac{1}{2}[\frac{x^2 _{t-1} - \tilde{\beta} _t(\frac{2\sqrt{\alpha _t} x_t}{\beta _t} + \frac{2\sqrt{\bar{\alpha}_{t-1}}x_0}{1-\bar{\alpha}_{t-1}})x_{t-1}}{\tilde{\beta} _t}]]
 \end{aligned}\]
 
 <p>We can now define our \(\mu\) as:</p>
 
 \[\begin{aligned}
-\tilde{\mu}(x_t, x_0) &amp;= (\frac{\alpha _t}{\beta _t} + \frac {1}{1-\bar{\alpha}_{t-1}})^{-1}(\frac{x_t \sqrt{\alpha _t}}{\beta _t} + \frac{\sqrt{\bar{\alpha}_{t-1}}x_0}{1-\bar{\alpha}_{t-1}})\\
+\tilde{\mu}(x_t, x_0) &amp;= \tilde{\beta} _t (\frac{x_t \sqrt{\alpha _t}}{\beta _t} + \frac{\sqrt{\bar{\alpha}_{t-1}}x_0}{1-\bar{\alpha}_{t-1}})\\
 &amp;= \frac{\sqrt{\alpha}_t(1-\bar{\alpha}_{t-1})x_t + \beta _t\sqrt{\bar{\alpha}_{t-1}x_0}}{\alpha _t - \alpha _t \bar{\alpha}_{t-1} + \beta _t}\\
 &amp;= \frac{\sqrt{\alpha _t} (1-\bar{\alpha}_{t-1})}{1 -\bar{\alpha}_t}x_t + \frac{\beta _t \sqrt{\bar{\alpha}_{t-1}}}{1-\bar{\alpha}_t}x_0
 \end{aligned}\]
@@ -616,40 +530,41 @@ q(x_{t-1}|x_t, x_0) &amp;= \exp [-\frac{1}{2}[x^2 _{t-1} - (\frac{2\sqrt{\alpha 
 &amp;= \frac{1}{\sqrt{\alpha _t}}(x_t - \frac{\beta _t}{\sqrt{1- \bar{\alpha} _t}}) \epsilon _t
 \end{aligned}\]
 
-<p>If we set \(\beta _t\) as fixed, we can ignore the \(L_T\) term when training. We choose to reparameterize 
-\(L_{t-1}\) in terms of the mean \(\mu _\theta (x_t, t)\) by using the following proof (INSERT LINK).</p>
+<p>Thus, we can redefine \(L_{t-1}\) in terms of the difference in the means of \(q(x_{t-1} \mid x_t, x_0)\) and \(p(x_{t-1} \mid x_t)\)</p>
 
 \[\begin{aligned}
 L_{t-1} &amp;=  E_{x\sim q}[D_{KL}(q(x_{t-1}|x_t, x_0)||p(x_{t-1}|x_t))]\\
-&amp;=  E_{x\sim q}[\frac{1}{2 \sigma _t ^2} \parallel \tilde{\mu}_t (x_t, x_0) - \mu_{\theta} (x_t, x_t) \parallel ^2 ] + C\\
+&amp;=  E_{x\sim q}[\frac{1}{2 \sigma _t ^2} \parallel \tilde{\mu}_t (x_t, x_0) - \mu_{\theta} (x_t, x_t) \parallel ^2 ]\\
 
 
 \end{aligned}\]
 
-<p>where C is a constant that does not depend on \(\theta\). We can the rewrite the equation in terms of 
-\(x_t(x_0, \epsilon) = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1-\bar{\alpha}_t}\epsilon\) for \(\epsilon \sim N(0, I)\)</p>
+<!--where C is a constant that does not depend on $$\theta$$. -->
+<p>We can the rewrite the equation in terms of \(x_t(x_0, \epsilon) = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1-\bar{\alpha}_t}\epsilon\) for \(\epsilon \sim N(0, I)\)</p>
 
 \[\begin{aligned}
 L_{t-1} - C &amp;=  E_{x\sim q}[\frac{1}{2 \sigma _t ^2} \parallel \tilde{\mu}_t (x_t, x_0) - \mu_{\theta} (x_t, t) \parallel ^2 ]\\
 L_{t-1} - C &amp;=  E_{x\sim q}[\frac{1}{2 \sigma _t ^2} \parallel \frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}}\epsilon) - \mu_{\theta} (x_t, t) \parallel ^2] \\
 \end{aligned}\]
 
-<p>“Thus, \(\mu _{\theta}\) must predict \(\frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}}\epsilon) - \mu_{\theta} (x_t, t)\) given x_t. Since \(x_t\) is available as input to the model, we may choose the parameterization”</p>
+<!-- 
+"Thus, $$\mu _{\theta}$$ must predict $$ \frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}}\epsilon) - \mu_{\theta} (x_t, t)$$ given x_t. Since $$x_t$$ is available as input to the model, we may choose the parameterization"
 
-\[\mu _{\theta} (x_t, t) =\frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}}\epsilon _{\theta}(x_t, t))\]
+$$ \mu _{\theta} (x_t, t) =\frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}}\epsilon _{\theta}(x_t, t))$$
 
-<p>“Where \(\epsilon _{\theta}\) is a function approximator intended to predict \(\epsilon\) from \(x_t\).”
-“To sample \(x_{t-1} \sim p_{\theta}(x_{t-1} \mid x_t)\) is to compute</p>
+"Where $$\epsilon _{\theta}$$ is a function approximator intended to predict $$\epsilon $$ from $$x_t$$."
+"To sample $$ x_{t-1} \sim p_{\theta}(x_{t-1} \mid x_t)$$ is to compute
 
-\[x_{t-1} = \frac{1}{\sqrt{\alpha _t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}})\epsilon _{\theta} (x_t, t) + \sigma _t z\]
+$$x_{t-1} = \frac{1}{\sqrt{\alpha _t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}})\epsilon _{\theta} (x_t, t) + \sigma _t z $$
 
-<p>where \(z \sim N(0, I)\)</p>
+where $$z \sim N(0, I)$$
 
-<p>The complete sampling procedure resembles Langevin dynamics with \(\epsilon _{\theta}\) as a learned gradient of the data density. We can further simplify our objective function to</p>
+The complete sampling procedure resembles Langevin dynamics with $$\epsilon _{\theta}$$ as a learned gradient of the data density. We can further simplify our objective function to
+-->
 
 \[\begin{aligned}
 
-L_{t-1} - C &amp;=  E_{x\sim q}[\frac{1}{2 \sigma _t ^2} \parallel \frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}}\epsilon) - \frac{1}{\sqrt{\alpha _t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}})\epsilon _{\theta} (x_t, t) \parallel ^2] \\
+L_{t-1} - C &amp;=  E_{x\sim q}[\frac{1}{2 \sigma _t ^2} \parallel \frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}}\epsilon) - \frac{1}{\sqrt{\alpha _t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}}\epsilon _{\theta} (x_t, t)) \parallel ^2] \\
 &amp;=  E_{x\sim q}[\frac{1}{2 \sigma _t ^2}\parallel  \frac{-\beta _t}{\sqrt{\alpha _t} \sqrt{1- \bar{\alpha} _t}}(\epsilon _t - \epsilon _{\theta}(x_t, t)) \parallel ^2] \\
 &amp;=  E_{x\sim q}[ \frac{\beta ^2 _t}{2 \sigma _t ^2 (\alpha _t) (1- \bar{\alpha} _t)} \parallel (\epsilon _t - \epsilon _{\theta}(x_t, t)) \parallel ^2] \\
 \end{aligned}\]
@@ -658,56 +573,49 @@ L_{t-1} - C &amp;=  E_{x\sim q}[\frac{1}{2 \sigma _t ^2} \parallel \frac{1}{\sqr
 
 \[L_{\text{simple} } (\theta) :=  E_{x\sim q}[\parallel (\epsilon _t - \epsilon _{\theta}(x_t, t)) \parallel ^2]\]
 
-<h1 id="stochastic-differential-equations">Stochastic Differential Equations</h1>
-
-<p>Things to add:
-more details on training section. Explanation of L2 Loss. Images. Rewrite explanation to be clearer. Double check/clear up notation. Final Loss funciton connection to NSCN and langevin dynamic sampling</p>
-
-<p>Why does the score funciton point towards the area of density</p>
-
-<p>decide on notation (explicitly specifying parameters to a function like xt ?) using semicolon after variable the distribution describes? M, Standard Dev, or variance</p>
+<p>Thus, training our model equates to training a neural network to predict the noise added to the image given the image and the timestep.</p>
 
 <h1 id="references">References</h1>
+<p>[1] Song, Y., &amp; Ermon, S. (2019). Generative Modeling by Estimating Gradients of the Data Distribution. In Advances in Neural Information Processing Systems (NeurIPS).</p>
+
+<p>[2] Vincent, P. (2011). A Connection Between Score Matching and Denoising Autoencoders. Neural Computation, 23(7), 1661–1674. doi:10.1162/NECO_a_00142</p>
+
+<p>[3] Ho, J., Jain, A., &amp; Abbeel, P. (2020). Denoising Diffusion Probabilistic Models. In Advances in Neural Information Processing Systems.</p>
+
+<p>[4] Song, Y., Sohl-Dickstein, J., Kingma, D. P., Kumar, A., Ermon, S., &amp; Poole, B. (2021). Score-Based Generative Modeling through Stochastic Differential Equations. In International Conference on Learning Representations (ICLR).</p>
+
+<p>[5] Song, Y. (2021, May 5). Generative Modeling by Estimating Gradients of the Data Distribution [Blog post]. Retrieved from Yang Song’s blog.</p>
+
+<!-- Stochastic Differential Equations
+======
+
+
+
+Things to add:
+more details on training section. Explanation of L2 Loss. Images. Rewrite explanation to be clearer. Double check/clear up notation. Final Loss funciton connection to NSCN and langevin dynamic sampling
+
+Why does the score funciton point towards the area of density
+
+decide on notation (explicitly specifying parameters to a function like xt ?) using semicolon after variable the distribution describes? M, Standard Dev, or variance
+
+
+-->
+
 
 
         
 
         
       </section>
-
+<!--
       <footer class="page__meta">
         
         
 
 
-  
 
 
-
-
-  
-  
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
-    <span itemprop="keywords">
-    
-      
-      
-      <a href="http://0.0.0.0:4000/tags/#category1" class="page__taxonomy-item" rel="tag">category1</a><span class="sep">, </span>
-    
-      
-      
-      <a href="http://0.0.0.0:4000/tags/#category2" class="page__taxonomy-item" rel="tag">category2</a>
-    
-    </span>
-  </p>
-
-
-
-
-      </footer>
+      </footer>-->
 
       
 
@@ -731,12 +639,11 @@ more details on training section. Explanation of L2 Loss. Images. Rewrite explan
 
   <nav class="pagination">
     
-      <a href="http://0.0.0.0:4000/posts/2012/08/blog-post-4/" class="pagination--pager" title="Blog Post number 4
+      <a href="http://0.0.0.0:4000/posts/2013/08/blog-post-2/" class="pagination--pager" title="A Soft Introduction to Stochastic-Machine Learning Parametrisation for Climate Modelling
 ">Previous</a>
     
     
-      <a href="http://0.0.0.0:4000/posts/2012/08/blog-post-4/" class="pagination--pager" title="Future Blog Post
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -765,7 +672,7 @@ more details on training section. Explanation of L2 Loss. Images. Rewrite explan
 
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="http://0.0.0.0:4000/posts/2012/08/blog-post-4/" rel="permalink">Future Blog Post
+        <a href="http://0.0.0.0:4000/posts/2013/08/blog-post-2/" rel="permalink">A Soft Introduction to Stochastic-Machine Learning Parametrisation for Climate Modelling
 </a>
       
     </h2>
@@ -775,145 +682,17 @@ more details on training section. Explanation of L2 Loss. Images. Rewrite explan
 
 
   
-	  less than 1 minute read
+	  11 minute read
 	
 </p>
     
 
         
-         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2199-01-01T00:00:00+00:00">January 01, 2199</time></p>
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2025-05-25T00:00:00+00:00">May 25, 2025</time></p>
         
 
     
-    <p class="archive__item-excerpt" itemprop="description"><p>This post will show up by default. To disable scheduling of future posts, edit <code class="language-plaintext highlighter-rouge">config.yml</code> and set <code class="language-plaintext highlighter-rouge">future: false</code>.</p>
-</p>
-    
-    
-    
-
-  </article>
-</div>
-
-        
-          
-
-
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="http://0.0.0.0:4000/posts/2012/08/blog-post-4/" rel="permalink">Blog Post number 4
-</a>
-      
-    </h2>
-    
-    
-      <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> 
-
-
-  
-	  less than 1 minute read
-	
-</p>
-    
-
-        
-         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2015-08-14T00:00:00+00:00">August 14, 2015</time></p>
-        
-
-    
-    <p class="archive__item-excerpt" itemprop="description"><p>This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.</p>
-
-</p>
-    
-    
-    
-
-  </article>
-</div>
-
-        
-          
-
-
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="http://0.0.0.0:4000/posts/2014/08/blog-post-3/" rel="permalink">Blog Post number 3
-</a>
-      
-    </h2>
-    
-    
-      <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> 
-
-
-  
-	  less than 1 minute read
-	
-</p>
-    
-
-        
-         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2014-08-14T00:00:00+00:00">August 14, 2014</time></p>
-        
-
-    
-    <p class="archive__item-excerpt" itemprop="description"><p>This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.</p>
-
-</p>
-    
-    
-    
-
-  </article>
-</div>
-
-        
-          
-
-
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="http://0.0.0.0:4000/posts/2013/08/blog-post-2/" rel="permalink">Blog Post number 2
-</a>
-      
-    </h2>
-    
-    
-      <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> 
-
-
-  
-	  less than 1 minute read
-	
-</p>
-    
-
-        
-         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2013-08-14T00:00:00+00:00">August 14, 2013</time></p>
-        
-
-    
-    <p class="archive__item-excerpt" itemprop="description"><p>This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.</p>
+    <p class="archive__item-excerpt" itemprop="description"><p>Ever growing in scientific and political importance, climate modeling serves as a critical tool in society’s battle against, and adaptation to, global climate change. To understand the present and the future of this field we must understand the role of physics, stochasticity, and increasingly, machine learning, in how we can predict our climate’s potential futures.</p>
 
 </p>
     
@@ -930,30 +709,18 @@ more details on training section. Explanation of L2 Loss. Images. Rewrite explan
 </div>
 
 
-    <div class="page__footer">
-      <footer>
-        <!-- start custom footer snippets -->
+    <script type="module" src="http://0.0.0.0:4000/assets/js/main.min.js"></script>
 
-<a href="/sitemap/">Sitemap</a>
 
-<!-- Support for MatJax -->
-<script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
 
-<!-- Support for Plotly -->
-<script defer src='https://cdnjs.cloudflare.com/ajax/libs/plotly.js/3.0.1/plotly.min.js'></script>
 
-<!-- Support for Mermaid -->
-<script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({startOnLoad:true, theme:'default'});
-    await mermaid.run({querySelector:'code.language-mermaid'});
-</script>
 
-<!-- end custom footer snippets -->
 
-        
 
+
+    
+
+<!--
 
 <div class="page__footer-follow">
   <ul class="social-icons">
@@ -973,21 +740,18 @@ more details on training section. Explanation of L2 Loss. Images. Rewrite explan
 
 <div class="page__footer-copyright">
   &copy; 2025 Katherine Frields, Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.<br />
-  Site last updated 2025-09-04
+  Site last updated 2025-09-05
 </div>
-
-      </footer>
-    </div>
-
-    <script type="module" src="http://0.0.0.0:4000/assets/js/main.min.js"></script>
+-->
 
 
-
-
-
-
+    <!-- _includes/mathjax.html -->
+<script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+<script defer id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 
   </body>
 </html>
+
+
 

@@ -24,7 +24,7 @@ html, body { margin: 0; padding: 0; background: none; height: 200vh; }
 }
 
 .feature .image2 {
-  background-image: url('/assets/images/darkened.jpg');
+  background-image: url('/assets/images/darkened_1.jpg');
   z-index: 1;
   opacity: 0; /* start hidden */
 }

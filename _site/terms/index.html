@@ -136,12 +136,10 @@
             
             <li class="masthead__menu-item"><a href="http://0.0.0.0:4000/cv/">CV</a></li>
           
-            
-            <li class="masthead__menu-item"><a href="http://0.0.0.0:4000/markdown/">Guide</a></li>
-          
+          <!--
           <li id="theme-toggle" class="masthead__menu-item persist tail">
             <a role="button" aria-labelledby="theme-icon"><i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i></a>
-          </li>
+          </li>-->
         </ul>
         <ul class="hidden-links hidden"></ul>
       </nav>
@@ -237,7 +235,7 @@
 
         
       </section>
-
+<!--
       <footer class="page__meta">
         
         
@@ -245,7 +243,7 @@
 
 
 
-      </footer>
+      </footer>-->
 
       
 
@@ -262,30 +260,18 @@
 </div>
 
 
-    <div class="page__footer">
-      <footer>
-        <!-- start custom footer snippets -->
+    <script type="module" src="http://0.0.0.0:4000/assets/js/main.min.js"></script>
 
-<a href="/sitemap/">Sitemap</a>
 
-<!-- Support for MatJax -->
-<script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
 
-<!-- Support for Plotly -->
-<script defer src='https://cdnjs.cloudflare.com/ajax/libs/plotly.js/3.0.1/plotly.min.js'></script>
 
-<!-- Support for Mermaid -->
-<script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({startOnLoad:true, theme:'default'});
-    await mermaid.run({querySelector:'code.language-mermaid'});
-</script>
 
-<!-- end custom footer snippets -->
 
-        
 
+
+    
+
+<!--
 
 <div class="page__footer-follow">
   <ul class="social-icons">
@@ -305,21 +291,18 @@
 
 <div class="page__footer-copyright">
   &copy; 2025 Katherine Frields, Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.<br />
-  Site last updated 2025-09-04
+  Site last updated 2025-09-05
 </div>
-
-      </footer>
-    </div>
-
-    <script type="module" src="http://0.0.0.0:4000/assets/js/main.min.js"></script>
+-->
 
 
-
-
-
-
+    <!-- _includes/mathjax.html -->
+<script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+<script defer id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 
   </body>
 </html>
+
+
 

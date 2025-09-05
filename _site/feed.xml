@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2025-09-04T00:40:03+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Katherine Frields</title><subtitle>Undergraduate Climate Data Science Researcher | UCI Data Science B.S &amp; Earth System Science B.S</subtitle><author><name>Katherine Frields</name><email>frieldskatherine@gmail.com</email></author><entry><title type="html">Future Blog Post</title><link href="http://0.0.0.0:4000/posts/2012/08/blog-post-4/" rel="alternate" type="text/html" title="Future Blog Post" /><published>2199-01-01T00:00:00+00:00</published><updated>2199-01-01T00:00:00+00:00</updated><id>http://0.0.0.0:4000/posts/2012/08/future-post</id><content type="html" xml:base="http://0.0.0.0:4000/posts/2012/08/blog-post-4/"><![CDATA[<p>This post will show up by default. To disable scheduling of future posts, edit <code class="language-plaintext highlighter-rouge">config.yml</code> and set <code class="language-plaintext highlighter-rouge">future: false</code>.</p>]]></content><author><name>Katherine Frields</name><email>frieldskatherine@gmail.com</email></author><category term="cool posts" /><category term="category1" /><category term="category2" /><summary type="html"><![CDATA[This post will show up by default. To disable scheduling of future posts, edit config.yml and set future: false.]]></summary></entry><entry><title type="html">The Math behind Diffusion Models</title><link href="http://0.0.0.0:4000/posts/2015/08/blog-post-1/" rel="alternate" type="text/html" title="The Math behind Diffusion Models" /><published>2025-08-19T00:00:00+00:00</published><updated>2025-08-19T00:00:00+00:00</updated><id>http://0.0.0.0:4000/posts/2015/08/blog-post-1</id><content type="html" xml:base="http://0.0.0.0:4000/posts/2015/08/blog-post-1/"><![CDATA[<h1 id="notation">Notation</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2025-09-05T04:52:37+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Katherine Frields</title><subtitle>Undergraduate Climate Data Science Researcher | UCI Data Science B.S &amp; Earth System Science B.S</subtitle><author><name>Katherine Frields</name><email>frieldskatherine@gmail.com</email></author><entry><title type="html">The Math behind Diffusion Models</title><link href="http://0.0.0.0:4000/posts/2015/08/blog-post-1/" rel="alternate" type="text/html" title="The Math behind Diffusion Models" /><published>2025-08-19T00:00:00+00:00</published><updated>2025-08-19T00:00:00+00:00</updated><id>http://0.0.0.0:4000/posts/2015/08/blog-post-1</id><content type="html" xml:base="http://0.0.0.0:4000/posts/2015/08/blog-post-1/"><![CDATA[<!--Notation
+======-->
 
 <p>Given a set of data \({x_1, x_2, ..., x_N}\), defined by the underlying data distribution q(x), our goal is
 to synthesize new samples from q(x). However, q(x) is unknown and can not be directly computed. Therefore, we instead
@@ -13,7 +14,7 @@ p_{\theta}(x) &amp;: \text {Predicted pdf, parameterized by }\theta
 
 <h2 id="score-function">Score Function</h2>
 <p>Rather than train a model to predict the \(p_{\theta}(x)\) directly, we instead train a model to predict the log gradient, 
-also known as the score \(s_{\theta}(x)\). When the gradient is positive, it means we’re moving closer to a denser region, and when the gradient is positive it means we’re moving towards a less dense region. The log is taken in order to normalize very small or large values, reducing roundoff error during computation.</p>
+also known as the score \(s_{\theta}(x)\) [2]. When the gradient is positive, it means we’re moving closer to a denser region, and when the gradient is positive it means we’re moving towards a less dense region. The log is taken in order to normalize very small or large values, reducing roundoff error during computation.</p>
 
 \[s_{\theta}(x) = \nabla _x log (p_{\theta}(x)) = \frac{\partial log(p_{\theta}(x))}{\partial x}\]
 
@@ -46,7 +47,7 @@ computationally feasible for high-dimensional data</p>
 </figure>
 
 <h2 id="denoising-score-matching">Denoising Score Matching</h2>
-<p>In order to train our score function without access to \(\nabla _x log (q(x))\), we can use a method known as desnoising score matching. Denoising score matching functions by first adding noise to our data then training the model to remove the noise.</p>
+<p>In order to train our score function without access to \(\nabla _x log (q(x))\), we can use a method known as desnoising score matching. Denoising score matching functions by first adding noise to our data then training the model to remove the noise [1].</p>
 
 <p>We start by defining our noising function</p>
 
@@ -94,7 +95,7 @@ a small amount of new gaussian noise.</p>
 <figure class="centered-figure">
   <img src="https://yang-song.net/assets/img/score/langevin.gif" alt="Langevin dynamics illustration" style="width: 60%; height: auto;" />
   <figcaption style="text-align: center;">
-    Figure 2: Langevin dynamics illustration
+    Fig 2: Langevin dynamics illustration
   </figcaption>
 </figure>
 
@@ -110,7 +111,7 @@ a small amount of new gaussian noise.</p>
 <figure class="centered-figure">
   <img src="https://yang-song.net/assets/img/score/pitfalls.jpg" alt="Pitfalls in score-based generative modeling" />
   <figcaption style="text-align: center;">
-    Figure 2: Pitfalls in score-based generative modeling
+    Fig 3: Pitfalls in score-based generative modeling
   </figcaption>
 </figure>
 
@@ -132,14 +133,14 @@ l_{\sigma}(\theta) &amp;= E_{\tilde{x} \sim q_{\sigma}(\tilde{x} \mid x)}[\frac{
 L _ {\{ \sigma _i \} ^ L _{i=1}}(\theta) = \frac {1}{L} \sum_{i=1}^L {\lambda (\sigma _i) l _ {\sigma}(\theta)}
 \end{aligned}\]
 
-<p>There are many possible choices of \(\lambda\). In our case we chose \(\lambda = \sigma _i ^2\).</p>
+<p>There are many possible choices of \(\lambda\). In our case we chose \(\lambda = \sigma _i ^2\)</p>
 
 <p>Thus, we use the following sampling algorithm. We start with our prior \(\tilde{x} _0\), which is drawn from a standard normal distribution. We then loop through all our noise levels and use them to define our step \(\alpha _i\), which decreases as \(\sigma _i \rightarrow \sigma _L\). This is equivalent to sampling from \(q _ {\sigma _1}\) to \(q _ {\sigma _2}\) all the way to \(q _ {\sigma _L}\), which is equivalent to q(x).</p>
 
 <figure class="centered-figure">
   <img src="/assets/images/NCSN_langevin_annealing_alg.png" alt="Annealed Langevin dynamic Sampling Algorithm" style="width: 50%; height: auto;" />
   <figcaption style="text-align: center;">
-    (Fig 2: Annealed Langevin Dynamic Sampling Algorithm [1])
+    (Fig 4: Annealed Langevin Dynamic Sampling Algorithm [1])
   </figcaption>
 </figure>
 
@@ -149,18 +150,18 @@ and produce accurate, and efficient samples from q(x).</p>
 <figure class="centered-figure">
   <img src="https://yang-song.net/assets/img/score/ald.gif" alt="ALD Illustration" />
   <figcaption style="text-align: center;">
-    Figure: NCSN Annealed Langevin Dyamic Sampling (note that the numbering of i-noise levels is reversed in this figure) [5].
+    Fig 5: NCSN Annealed Langevin Dyamic Sampling (note that the numbering of i-noise levels is reversed in this figure) [5].
   </figcaption>
 </figure>
 
 <h1 id="denoising-diffusionprobability-model-ddpm">Denoising DiffusionProbability Model (DDPM)</h1>
 
-<p>Denoising Diffusion Probability Models operate by using a markov chain \(q(x_t \mid x_{t-1})\) to continually add noise to a known data point x, in a process known as forwarddiffusion. We then training a model to predict the reverse markov chain \(q(x_{t-1} \mid x_t)\), by learning the parameterized function \(p_{\theta}(x_{t-1} \mid x_t)\), in a process known as reverse diffusion.</p>
+<p>Denoising Diffusion Probability Models operate by using a markov chain \(q(x_t \mid x_{t-1})\) to continually add noise to a known data point x, in a process known as forwarddiffusion. We then training a model to predict the reverse markov chain \(q(x_{t-1} \mid x_t)\), by learning the parameterized function \(p_{\theta}(x_{t-1} \mid x_t)\), in a process known as reverse diffusion [3].</p>
 
 <figure class="centered-figure">
   <img src="/assets/images/reverse-diffusion.png" alt="DDPM Forward and Reverse Diffusion" />
   <figcaption style="text-align: center;">
-    (Fig 2:DDPM Forward and Reverse Diffusion [https://theaisummer.com/diffusion-models/])
+    (Fig 6:DDPM Forward and Reverse Diffusion [https://theaisummer.com/diffusion-models/])
   </figcaption>
 </figure>
 
@@ -171,20 +172,13 @@ and produce accurate, and efficient samples from q(x).</p>
 \[q(x_t \mid x_{t-1}) =  N(x^t ; x^{t-1}\sqrt{(1- \beta ^ t)}, I \beta ^ t)\]
 
 <p>By sequentially multiplying our initial distribution \(q(x^0)\)  by this Markov kernel, we 
-will end up with our target distribution \(\pi (y)\). Thus, we can define each step in our forward 
-trajectory by this Markov kernel.</p>
-
-\[\begin{aligned}
-q(x_t \mid x_{t-1}) = N(x_t ; x_{t-1} \sqrt{(1-\beta _ t)}, I\beta _ t)
-\end{aligned}\]
-
-<p>This noising process continues until \(x_{t-1} \sqrt{(1-\beta _ t)}\) is near 0, and 
+will end up with our target distribution \(\pi (y)\). In our case, this noising process continues until \(x_{t-1} \sqrt{(1-\beta _ t)}\) is near 0, and 
 \(\beta _ t\) is near 1. The exact value of \(\beta\) is controlled by a variance schedule, which is typically linear.</p>
 
 <figure class="centered-figure">
   <img src="https://learnopencv.com/wp-content/uploads/2023/02/denoising-diffusion-probabilistic-models_forward_diffusion_variance_scheduler.png" alt="Example Variance Schedule" />
   <figcaption style="text-align: center;">
-    Figure: Example Variance Schedule [https://learnopencv.com/denoising-diffusion-probabilistic-models/].
+    Fig  7: Example Variance Schedule [https://learnopencv.com/denoising-diffusion-probabilistic-models/].
   </figcaption>
 </figure>
 
@@ -193,11 +187,15 @@ q(x_t \mid x_{t-1}) = N(x_t ; x_{t-1} \sqrt{(1-\beta _ t)}, I\beta _ t)
 <figure class="centered-figure">
   <img src="/assets/images/reparam_technique.png" alt="DDPM Forward and Reverse Diffusion" />
   <figcaption style="text-align: center;">
-    (Fig 2:Reparameterization technique [https://roysubhradip.hashnode.dev/a-beginners-guide-to-diffusion-models-understanding-the-basics-and-beyond])
+    (Fig 8:Reparameterization technique [https://roysubhradip.hashnode.dev/a-beginners-guide-to-diffusion-models-understanding-the-basics-and-beyond])
   </figcaption>
 </figure>
 
-<p>This results in the closed form \(x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1-\bar{\alpha}_t}\epsilon\)</p>
+<p>This results in the closed form</p>
+
+<p>\(x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1-\bar{\alpha}_t}\epsilon, \epsilon \sim N(0,1)\).</p>
+
+<p>We can use this closed form to draw samples from our intermediate distributions</p>
 
 <p>The full forward trajectory is defined by the joint distribution of our timesteps.</p>
 
@@ -206,17 +204,22 @@ q(x_1, x_2,...,x_t) = q(x_{0...T}) = q(x_0)\prod_{t=1}^T q(x_t \mid x_{t-1})
 \end{aligned}\]
 
 <h2 id="reverse-diffusion">Reverse Diffusion</h2>
-<p>We want to know \(q(x_{t-1} \mid x_t)\), but the equation is analytically intractable as it would require integrating over the entire space x. Thus, we instead train \(p(x_{t-1} \mid x_t)\) to approximate the function.</p>
+<p>We want to know \(q(x_{t-1} \mid x_t)\), but the distribution is analytically intractable as it would require integrating over the entire space x. Thus, we instead train \(p(x_{t-1} \mid x_t)\) to approximate the function.</p>
 
 \[p(x_{t-1}│x_t) = N(x_{t-1}; \mu _{\theta}(x_t, t), \Sigma _ \theta (x_t, t))\]
 
-<p>Where \(\mu _{\theta}(x_t, t)\) is the parameterized mean of our distribution and \(\Sigma _ \theta (x_t, t)\) is the variance. The full reverse trajectory is defined by the joint distribution of our timesteps</p>
+<p>Where \(\mu _{\theta}(x_t, t)\) is the parameterized mean of our distribution and \(\Sigma _ \theta (x_t, t)\) is the variance.</p>
+
+<p>To initialize \(p_ \theta (x_{t-1} \mid x_t)\), we set  \(\Sigma _ \theta (x _t, t) = \sigma _t ^ 2 I\). Though there are many diferent choices of \(\sigma _t ^2,\) as a rule of thumb</p>
+
+<p>If \(x_0 \sim N(0,1)\), we set \(\sigma _t ^ 2 = \beta _t ^ 2\)   <br />
+If \(x_0\) is set to one point, we set \(\sigma _t ^ 2 = \tilde{\beta} _t ^ 2 = \frac{1- \bar{\alpha}_{t-1}}{1-\bar{\alpha}_t}\beta _t\)</p>
+
+<p>In our case, we set \(\sigma _t ^ 2 = \beta _t ^ 2\), where \(\beta\) has a fixed schedule.</p>
+
+<p>The full reverse trajectory is defined by the joint distribution of our timesteps</p>
 
 \[p(x_1, x_2,...,x_t) = p(x_{0...T}) = p(x_0)\prod_{t=1}^T p(x_t \mid x_{t-1})\]
-
-<p>To initialize \(p_ \theta (x_{t-1} \mid x_t)\), we set  \(\Sigma _ \theta (x _t, t) = \sigma _t ^ 2 I\).  <br />
-If \(x_0 \sim N(0,1)\), we set \(\sigma _t ^ 2 = \beta _t ^ 2\)   <br />
-If \(x_0\) is set to one point, we set \(\sigma _t ^ 2 = \tilde{\beta} _t ^ 2 = \frac{1- \bar{\alpha}_{t-1}}{1-\bar{\alpha}_t}\beta _t\)</p>
 
 <h2 id="training">Training</h2>
 <p>To train our function \(p_ \theta (x_{t-1} \mid x_t)\), we must determine an objective funciton which measures the distance beteween  \(p_ \theta (x_{t-1} \mid x_t)\) and  \(q (x_{t-1} \mid x_t)\). To do so, we use KL Divergence and derive the Evidence Lower Bound (ELBO).</p>
@@ -234,28 +237,30 @@ where q(x) is the true probability distribution and p(x) is the predicted distri
   <p><strong>Evidence Lower Bound (ELBO):</strong><br />
 ELBO uses the KL divergence between true and predicted conditional distributions to define the lower bound 
 \(\begin{aligned} 
-D_{KL}(q||p) &amp;= \int q(z|x)log(\frac{q(z|x)}{p(z|x)}) \\
+D_{KL}(q(z|x)||p(z|x)) &amp;= \int q(z|x)log(\frac{q(z|x)}{p(z|x)}) \\
 &amp;= \int q(z|x)log({q(z|x)}) - \int q(z|x)log({p(z|x)}) \\
 &amp;= \int q(z|x)log({q(z|x)}) - \int q(z|x)log(\frac{p(z,x)}{p(x)}) \\
 &amp;= \int q(z|x)log({q(z|x)}) - \int q(z|x)log({p(z,x)}) + \int q(z|x)log({p(x)}) \\
 &amp;=  E_{z\sim q}[log({q(z|x)})] - E_{z\sim q}[log({p(z,x)})] + log({p(x)})\int q(z|x) \\
 &amp;=  E_{z\sim q}[log({q(z|x)})] - E_{z\sim q}[log({p(z,x)})] + log({p(x)}) \\
-log({p(x)}) &amp;= D_{KL}(q||p) -  E_{z\sim q}[log({q(z|x)})] + E_{z\sim q}[log({p(z,x)})] \\
+log({p(x)}) &amp;= D_{KL}(q(z|x)||p(z|x)) -  E_{z\sim q}[log({q(z|x)})] + E_{z\sim q}[log({p(z,x)})] \\
 \end{aligned}\)</p>
 
   <p>Since KL divergence is always &gt;0</p>
 
 \[log({p(x)}) \geq -  \underbrace{E_{z\sim q}[log({q(z|x)})] + E_{z\sim q}[log({p(z,x)})]}_{\text{ELBO}}\]
 
-  <p>Since the log likelihood of p will remain constant, by minimizing the 
+  <p>Since the log likelihood of p will remain constant for a given x, by minimizing the 
 right hand terms you indirectly minimize the KL Divergence.</p>
 </blockquote>
 
-<p>Training optimizes the variational bound on the negative log likelihood by stochastic gradient descent.</p>
+<p>Thus, we can train our model to minimize the KL Divergence  \(D_{KL}(q(x_{1...T}|x_0)||p(x_{1...T}|x_0))\).
+Thereby minimizing the distance between the true and predicted reverse trajectories for a given image \(x_0\).
+This is also equivalent to maximizing the the probability of \(p(x_0)\) given \(x_0 \sim q\).</p>
 
 \[\begin{aligned}
- E_{x\sim q}[log({p(x)})] &amp;\geq -  E_{x\sim q}[log({q(x_{1...T}|x_0)})] + E_{x\sim q}[log({p(x_0,x_{1...T})})]\\   
- E_{x\sim q}[-log({p(x)}]) &amp;\leq  E_{x\sim q}[log({q(x_{1...T}|x_0)})] - E_{x\sim q}[log({p(x_0,x_{1...T})})]\\   
+ E_{x\sim q}[log({p(x_0)})] &amp;\geq -  E_{x\sim q}[log({q(x_{1...T}|x_0)})] + E_{x\sim q}[log({p(x_0,x_{1...T})})]\\   
+ E_{x\sim q}[-log({p(x_0)}]) &amp;\leq  E_{x\sim q}[log({q(x_{1...T}|x_0)})] - E_{x\sim q}[log({p(x_0,x_{1...T})})]\\   
 &amp;=  E_{x\sim q}[-log(\frac{p(x_0,x_{1...T})}{q(x_{1...T}|x_0)})]\\
 &amp;=  E_{x\sim q}[-log(\frac{p(x_T)\prod_{t=1}^{T}p(x_{t-1}|x_t)} {\prod_{t=1}^{T}q(x_{t}|x_{t-1})})]\\
 &amp;=  E_{x\sim q}[-log(p(x_T)) -\sum_{t=1}^{T}log(\frac{p(x_{t-1}|x_t)}{q(x_t|x_{t-1})})]\\
@@ -266,9 +271,15 @@ right hand terms you indirectly minimize the KL Divergence.</p>
 &amp;=  E_{x\sim q}[-log(p(x_T)) -\sum_{t=2}^{T}log(\frac{p(x_{t-1}|x_t)}{q(x_{t-1}|x_t, x_0)}) - log(\frac{q(x_1|x_0)}{q(x_T|x_0)}) + log(q(x_1|x_0)) - log(p(x_0|x_1)) ]\\
 &amp;=  E_{x\sim q}[-log(p(x_T)) -\sum_{t=2}^{T}log(\frac{p(x_{t-1}|x_t)}{q(x_{t-1}|x_t, x_0)}) - log(\frac{1}{q(x_T|x_0)}) - log(p(x_0|x_1)) ]\\
 &amp;=  E_{x\sim q}[\frac{-log(p(x_T))}{q(x_T|x_0)} -\sum_{t=2}^{T}log(\frac{p(x_{t-1}|x_t)}{q(x_{t-1}|x_t, x_0)}) - log(p(x_0|x_1)) ]\\
-&amp;= E_{x\sim q}{\underbrace{D_{KL}(q(x_T|x_0)||p(x_T))}_{L_T} + \sum_{t=2}^{T}\underbrace{D_{KL}(q(x_{t-1}|x_t, x_0)||p(x_{t-1}|x_t))}_{L_{T-1}} - log(p(x_0|x_1))}
+&amp;= E_{x\sim q}{\underbrace{D_{KL}(q(x_T|x_0)||p(x_T))}_{L_T} + \sum_{t=2}^{T}\underbrace{D_{KL}(q(x_{t-1}|x_t, x_0)||p(x_{t-1}|x_t))}_{L_{T-1}} - \underbrace{log(p(x_0|x_1))}_{L_0}}
 \end{aligned}\]
 
+<p>This simplified expression seperates out our terms into \(L_T\), \(L_{T-1}\), and \(L_0\). Our \(L_T\) term is made up of our forward diffusion \(q(x_T \mid x_0)\) and our prior distribution \(p(x_T)\). Since both of these are known, we can ignore \(L_T\) when training.
+Thus what remains is training a model to minimize \(L_{T-1}\). Since \(L_{T-1}\) is the the KL divergence between \(q(x_{t-1}|x_t, x_0)||p(x_{t-1}|x_t)\) and we have fixed the variance of each to be \(\beta _t\), minimizing the KL divergence is equivalent to minimzing the distance between their means.</p>
+
+<p>Thus, we aim to define the mean of \(q(x_{t-1} \mid x_t, x_0)\).</p>
+
+<!--Additionally, $$L_0$$ can be trained using a simple neural network. FINISH THISSSS-->
 <blockquote>
   <p><strong>Gaussian Distribution:</strong><br />
 Let \(x \sim N(\mu, \sigma)\). We can then define the pdf as:
@@ -279,8 +290,6 @@ f(x) &amp;= \frac{exp(-\frac{1}{2}(\frac{x- \mu}{\sigma})^2)}{\sigma \sqrt{2\pi}
 \end{aligned}\)</p>
 
 </blockquote>
-
-<p>To continue, we must first define \(q(x_{t-1}\mid x_t, x_0)\)</p>
 
 \[\begin{aligned}
 q(x_{t-1}|x_t, x_0) &amp;= q(x_t | x_{t-1}, x_0)\frac{q(x_t-1 | x_0)}{q(x_t | x_0)}\\
@@ -299,21 +308,19 @@ q(x_{t-1}|x_t, x_0) &amp;= q(x_t | x_{t-1}, x_0)\frac{q(x_t-1 | x_0)}{q(x_t | x_
 
 <p>Since our collection of terms \(C(x_t, x_0)\) does not contain \(x_{t-1}\), we can treat it as a constant and ignore it.</p>
 
-<p>Now, to rewrite this as a normal distribution, we must identify the mean and variance of our distribution. According to the Normal PDF described earlier, we expect out \(x^2\) term to have a coefficient of 1 and our x term to have a coefficient of \(-2\mu\).</p>
-
-<p>To satifsy this constrain, we can define our variance as:</p>
+<p>Now, to rewrite this as a normal distribution, we must identify the mean and variance of our distribution. According to the Normal PDF described earlier, we expect our \(x^2\) term to have a coefficient of 1 and our x term to have a coefficient of \(-2\mu\). To satifsy this constrain, we can define our variance as:</p>
 
 \[\tilde{\beta}_t = (\frac{\alpha _t}{\beta _t} + \frac {1}{1-\bar{\alpha}_{t-1}})^{-1}\]
 
 \[\begin{aligned}
-q(x_{t-1}|x_t, x_0) &amp;= \exp [-\frac{1}{2}[x^2 _{t-1} - (\frac{2\sqrt{\alpha _t} x_t}{\beta _t} + \frac{2\sqrt{\bar{\alpha}_{t-1}}x_0}{1-\bar{\alpha}_{t-1}})x_{t-1}]]\\
-&amp;= \exp [-\frac{1}{2}[\frac{x^2 _{t-1} - (\frac{\alpha _t}{\beta _t} + \frac {1}{1-\bar{\alpha}_{t-1}})^{-1}(\frac{2\sqrt{\alpha _t} x_t}{\beta _t} + \frac{2\sqrt{\bar{\alpha}_{t-1}}x_0}{1-\bar{\alpha}_{t-1}})x_{t-1}}{(\frac{\alpha _t}{\beta _t} + \frac {1}{1-\bar{\alpha}_{t-1}})^{-1}}]]
+q(x_{t-1}|x_t, x_0) &amp;= \exp [-\frac{1}{2}[ \frac{x^2 _{t-1}}{\tilde{\beta} _t} - (\frac{2\sqrt{\alpha _t} x_t}{\beta _t} + \frac{2\sqrt{\bar{\alpha}_{t-1}}x_0}{1-\bar{\alpha}_{t-1}})x_{t-1}]]\\
+&amp;= \exp [-\frac{1}{2}[\frac{x^2 _{t-1} - \tilde{\beta} _t(\frac{2\sqrt{\alpha _t} x_t}{\beta _t} + \frac{2\sqrt{\bar{\alpha}_{t-1}}x_0}{1-\bar{\alpha}_{t-1}})x_{t-1}}{\tilde{\beta} _t}]]
 \end{aligned}\]
 
 <p>We can now define our \(\mu\) as:</p>
 
 \[\begin{aligned}
-\tilde{\mu}(x_t, x_0) &amp;= (\frac{\alpha _t}{\beta _t} + \frac {1}{1-\bar{\alpha}_{t-1}})^{-1}(\frac{x_t \sqrt{\alpha _t}}{\beta _t} + \frac{\sqrt{\bar{\alpha}_{t-1}}x_0}{1-\bar{\alpha}_{t-1}})\\
+\tilde{\mu}(x_t, x_0) &amp;= \tilde{\beta} _t (\frac{x_t \sqrt{\alpha _t}}{\beta _t} + \frac{\sqrt{\bar{\alpha}_{t-1}}x_0}{1-\bar{\alpha}_{t-1}})\\
 &amp;= \frac{\sqrt{\alpha}_t(1-\bar{\alpha}_{t-1})x_t + \beta _t\sqrt{\bar{\alpha}_{t-1}x_0}}{\alpha _t - \alpha _t \bar{\alpha}_{t-1} + \beta _t}\\
 &amp;= \frac{\sqrt{\alpha _t} (1-\bar{\alpha}_{t-1})}{1 -\bar{\alpha}_t}x_t + \frac{\beta _t \sqrt{\bar{\alpha}_{t-1}}}{1-\bar{\alpha}_t}x_0
 \end{aligned}\]
@@ -328,40 +335,41 @@ q(x_{t-1}|x_t, x_0) &amp;= \exp [-\frac{1}{2}[x^2 _{t-1} - (\frac{2\sqrt{\alpha 
 &amp;= \frac{1}{\sqrt{\alpha _t}}(x_t - \frac{\beta _t}{\sqrt{1- \bar{\alpha} _t}}) \epsilon _t
 \end{aligned}\]
 
-<p>If we set \(\beta _t\) as fixed, we can ignore the \(L_T\) term when training. We choose to reparameterize 
-\(L_{t-1}\) in terms of the mean \(\mu _\theta (x_t, t)\) by using the following proof (INSERT LINK).</p>
+<p>Thus, we can redefine \(L_{t-1}\) in terms of the difference in the means of \(q(x_{t-1} \mid x_t, x_0)\) and \(p(x_{t-1} \mid x_t)\)</p>
 
 \[\begin{aligned}
 L_{t-1} &amp;=  E_{x\sim q}[D_{KL}(q(x_{t-1}|x_t, x_0)||p(x_{t-1}|x_t))]\\
-&amp;=  E_{x\sim q}[\frac{1}{2 \sigma _t ^2} \parallel \tilde{\mu}_t (x_t, x_0) - \mu_{\theta} (x_t, x_t) \parallel ^2 ] + C\\
+&amp;=  E_{x\sim q}[\frac{1}{2 \sigma _t ^2} \parallel \tilde{\mu}_t (x_t, x_0) - \mu_{\theta} (x_t, x_t) \parallel ^2 ]\\
 
 
 \end{aligned}\]
 
-<p>where C is a constant that does not depend on \(\theta\). We can the rewrite the equation in terms of 
-\(x_t(x_0, \epsilon) = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1-\bar{\alpha}_t}\epsilon\) for \(\epsilon \sim N(0, I)\)</p>
+<!--where C is a constant that does not depend on $$\theta$$. -->
+<p>We can the rewrite the equation in terms of \(x_t(x_0, \epsilon) = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1-\bar{\alpha}_t}\epsilon\) for \(\epsilon \sim N(0, I)\)</p>
 
 \[\begin{aligned}
 L_{t-1} - C &amp;=  E_{x\sim q}[\frac{1}{2 \sigma _t ^2} \parallel \tilde{\mu}_t (x_t, x_0) - \mu_{\theta} (x_t, t) \parallel ^2 ]\\
 L_{t-1} - C &amp;=  E_{x\sim q}[\frac{1}{2 \sigma _t ^2} \parallel \frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}}\epsilon) - \mu_{\theta} (x_t, t) \parallel ^2] \\
 \end{aligned}\]
 
-<p>“Thus, \(\mu _{\theta}\) must predict \(\frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}}\epsilon) - \mu_{\theta} (x_t, t)\) given x_t. Since \(x_t\) is available as input to the model, we may choose the parameterization”</p>
+<!-- 
+"Thus, $$\mu _{\theta}$$ must predict $$ \frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}}\epsilon) - \mu_{\theta} (x_t, t)$$ given x_t. Since $$x_t$$ is available as input to the model, we may choose the parameterization"
 
-\[\mu _{\theta} (x_t, t) =\frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}}\epsilon _{\theta}(x_t, t))\]
+$$ \mu _{\theta} (x_t, t) =\frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}}\epsilon _{\theta}(x_t, t))$$
 
-<p>“Where \(\epsilon _{\theta}\) is a function approximator intended to predict \(\epsilon\) from \(x_t\).”
-“To sample \(x_{t-1} \sim p_{\theta}(x_{t-1} \mid x_t)\) is to compute</p>
+"Where $$\epsilon _{\theta}$$ is a function approximator intended to predict $$\epsilon $$ from $$x_t$$."
+"To sample $$ x_{t-1} \sim p_{\theta}(x_{t-1} \mid x_t)$$ is to compute
 
-\[x_{t-1} = \frac{1}{\sqrt{\alpha _t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}})\epsilon _{\theta} (x_t, t) + \sigma _t z\]
+$$x_{t-1} = \frac{1}{\sqrt{\alpha _t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}})\epsilon _{\theta} (x_t, t) + \sigma _t z $$
 
-<p>where \(z \sim N(0, I)\)</p>
+where $$z \sim N(0, I)$$
 
-<p>The complete sampling procedure resembles Langevin dynamics with \(\epsilon _{\theta}\) as a learned gradient of the data density. We can further simplify our objective function to</p>
+The complete sampling procedure resembles Langevin dynamics with $$\epsilon _{\theta}$$ as a learned gradient of the data density. We can further simplify our objective function to
+-->
 
 \[\begin{aligned}
 
-L_{t-1} - C &amp;=  E_{x\sim q}[\frac{1}{2 \sigma _t ^2} \parallel \frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}}\epsilon) - \frac{1}{\sqrt{\alpha _t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}})\epsilon _{\theta} (x_t, t) \parallel ^2] \\
+L_{t-1} - C &amp;=  E_{x\sim q}[\frac{1}{2 \sigma _t ^2} \parallel \frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}}\epsilon) - \frac{1}{\sqrt{\alpha _t}}(x_t - \frac{\beta _t}{\sqrt{1-\bar{\alpha}_t}}\epsilon _{\theta} (x_t, t)) \parallel ^2] \\
 &amp;=  E_{x\sim q}[\frac{1}{2 \sigma _t ^2}\parallel  \frac{-\beta _t}{\sqrt{\alpha _t} \sqrt{1- \bar{\alpha} _t}}(\epsilon _t - \epsilon _{\theta}(x_t, t)) \parallel ^2] \\
 &amp;=  E_{x\sim q}[ \frac{\beta ^2 _t}{2 \sigma _t ^2 (\alpha _t) (1- \bar{\alpha} _t)} \parallel (\epsilon _t - \epsilon _{\theta}(x_t, t)) \parallel ^2] \\
 \end{aligned}\]
@@ -370,31 +378,105 @@ L_{t-1} - C &amp;=  E_{x\sim q}[\frac{1}{2 \sigma _t ^2} \parallel \frac{1}{\sqr
 
 \[L_{\text{simple} } (\theta) :=  E_{x\sim q}[\parallel (\epsilon _t - \epsilon _{\theta}(x_t, t)) \parallel ^2]\]
 
-<h1 id="stochastic-differential-equations">Stochastic Differential Equations</h1>
+<p>Thus, training our model equates to training a neural network to predict the noise added to the image given the image and the timestep.</p>
 
-<p>Things to add:
-more details on training section. Explanation of L2 Loss. Images. Rewrite explanation to be clearer. Double check/clear up notation. Final Loss funciton connection to NSCN and langevin dynamic sampling</p>
+<h1 id="references">References</h1>
+<p>[1] Song, Y., &amp; Ermon, S. (2019). Generative Modeling by Estimating Gradients of the Data Distribution. In Advances in Neural Information Processing Systems (NeurIPS).</p>
 
-<p>Why does the score funciton point towards the area of density</p>
+<p>[2] Vincent, P. (2011). A Connection Between Score Matching and Denoising Autoencoders. Neural Computation, 23(7), 1661–1674. doi:10.1162/NECO_a_00142</p>
 
-<p>decide on notation (explicitly specifying parameters to a function like xt ?) using semicolon after variable the distribution describes? M, Standard Dev, or variance</p>
+<p>[3] Ho, J., Jain, A., &amp; Abbeel, P. (2020). Denoising Diffusion Probabilistic Models. In Advances in Neural Information Processing Systems.</p>
 
-<h1 id="references">References</h1>]]></content><author><name>Katherine Frields</name><email>frieldskatherine@gmail.com</email></author><category term="category1" /><category term="category2" /><summary type="html"><![CDATA[Notation]]></summary></entry><entry><title type="html">Blog Post number 4</title><link href="http://0.0.0.0:4000/posts/2012/08/blog-post-4/" rel="alternate" type="text/html" title="Blog Post number 4" /><published>2015-08-14T00:00:00+00:00</published><updated>2015-08-14T00:00:00+00:00</updated><id>http://0.0.0.0:4000/posts/2012/08/blog-post-4</id><content type="html" xml:base="http://0.0.0.0:4000/posts/2012/08/blog-post-4/"><![CDATA[<p>This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.</p>
+<p>[4] Song, Y., Sohl-Dickstein, J., Kingma, D. P., Kumar, A., Ermon, S., &amp; Poole, B. (2021). Score-Based Generative Modeling through Stochastic Differential Equations. In International Conference on Learning Representations (ICLR).</p>
 
-<h1 id="headings-are-cool">Headings are cool</h1>
+<p>[5] Song, Y. (2021, May 5). Generative Modeling by Estimating Gradients of the Data Distribution [Blog post]. Retrieved from Yang Song’s blog.</p>
 
-<h1 id="you-can-have-many-headings">You can have many headings</h1>
+<!-- Stochastic Differential Equations
+======
 
-<h2 id="arent-headings-cool">Aren’t headings cool?</h2>]]></content><author><name>Katherine Frields</name><email>frieldskatherine@gmail.com</email></author><category term="cool posts" /><category term="category1" /><category term="category2" /><summary type="html"><![CDATA[This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.]]></summary></entry><entry><title type="html">Blog Post number 3</title><link href="http://0.0.0.0:4000/posts/2014/08/blog-post-3/" rel="alternate" type="text/html" title="Blog Post number 3" /><published>2014-08-14T00:00:00+00:00</published><updated>2014-08-14T00:00:00+00:00</updated><id>http://0.0.0.0:4000/posts/2014/08/blog-post-3</id><content type="html" xml:base="http://0.0.0.0:4000/posts/2014/08/blog-post-3/"><![CDATA[<p>This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.</p>
 
-<h1 id="headings-are-cool">Headings are cool</h1>
 
-<h1 id="you-can-have-many-headings">You can have many headings</h1>
+Things to add:
+more details on training section. Explanation of L2 Loss. Images. Rewrite explanation to be clearer. Double check/clear up notation. Final Loss funciton connection to NSCN and langevin dynamic sampling
 
-<h2 id="arent-headings-cool">Aren’t headings cool?</h2>]]></content><author><name>Katherine Frields</name><email>frieldskatherine@gmail.com</email></author><category term="cool posts" /><category term="category1" /><category term="category2" /><summary type="html"><![CDATA[This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.]]></summary></entry><entry><title type="html">Blog Post number 2</title><link href="http://0.0.0.0:4000/posts/2013/08/blog-post-2/" rel="alternate" type="text/html" title="Blog Post number 2" /><published>2013-08-14T00:00:00+00:00</published><updated>2013-08-14T00:00:00+00:00</updated><id>http://0.0.0.0:4000/posts/2013/08/blog-post-2</id><content type="html" xml:base="http://0.0.0.0:4000/posts/2013/08/blog-post-2/"><![CDATA[<p>This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.</p>
+Why does the score funciton point towards the area of density
 
-<h1 id="headings-are-cool">Headings are cool</h1>
+decide on notation (explicitly specifying parameters to a function like xt ?) using semicolon after variable the distribution describes? M, Standard Dev, or variance
 
-<h1 id="you-can-have-many-headings">You can have many headings</h1>
 
-<h2 id="arent-headings-cool">Aren’t headings cool?</h2>]]></content><author><name>Katherine Frields</name><email>frieldskatherine@gmail.com</email></author><category term="cool posts" /><category term="category1" /><category term="category2" /><summary type="html"><![CDATA[This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.]]></summary></entry></feed>
+-->]]></content><author><name>Katherine Frields</name><email>frieldskatherine@gmail.com</email></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">A Soft Introduction to Stochastic-Machine Learning Parametrisation for Climate Modelling</title><link href="http://0.0.0.0:4000/posts/2013/08/blog-post-2/" rel="alternate" type="text/html" title="A Soft Introduction to Stochastic-Machine Learning Parametrisation for Climate Modelling" /><published>2025-05-25T00:00:00+00:00</published><updated>2025-05-25T00:00:00+00:00</updated><id>http://0.0.0.0:4000/posts/2013/08/blog-post-2</id><content type="html" xml:base="http://0.0.0.0:4000/posts/2013/08/blog-post-2/"><![CDATA[<p>Ever growing in scientific and political importance, climate modeling serves as a critical tool in society’s battle against, and adaptation to, global climate change. To understand the present and the future of this field we must understand the role of physics, stochasticity, and increasingly, machine learning, in how we can predict our climate’s potential futures.</p>
+
+<h2 id="traditional-approaches">Traditional Approaches</h2>
+
+<p>Traditional climate models rely heavily on physics to model the interaction between Earth’s oceans, atmosphere, and human society. The earth is first separated into grid cells, each containing one column of ocean, earth, and atmosphere. The state variables of each cell (ie. humidity, temperature, wind speed) are used as input into the dynamical core, which solves the physical equations governing the motion of fluid in the atmosphere, moving the model forward one time step (Christensen et al., 2024).</p>
+
+<figure class="centered-figure">
+  <img src="/images/stochastic_param_iamge.png" alt="Score-based generative modeling with score matching + Langevin dynamics" />
+  <figcaption style="text-align: center;">(Typically, cells are divided laterally, but extend vertically along the length of the column, with different states at each level of elevation. Adapted from “Climate goals and computing the future of clouds” by Schneider et al., 2017, Nature Climate Change, 7, 3–5.)</figcaption>
+</figure>
+
+<p>Typically, cells are divided laterally, but extend vertically along the length of the column, with different states at each level of elevation. Adapted from “Climate goals and computing the future of clouds” by Schneider et al., 2017, Nature Climate Change, 7, 3–5.Notably, these individual grid cells can often be quite large, around 100 km, and are often on time scales of 30–60 minutes (Christensen et al., 2024). However, these spatial and temporal scales are too coarse to allow for explicit resolution of the physics occurring on a subgrid level, including the moist convection processes that form cumulus and stratocumulus clouds, both of which play a critical role in governing global temperatures (Schneider et al., 2017; Norman et al., 2022). Thus, parametrisations are used in order to simulate the effect of subgrid physics on each individual column, the mean of which is used as the resulting state of the grid cell after one time-step (Christensen et al., 2024; Norman et al., 2022).</p>
+
+<p>However, these parametrisations consistently result in mean and variability bias, leading to significant errors in long-run climate simulations (Christensen et al., 2024; Norman et al., 2022). This can be largely attributed to the scale-invariance of the equations governing fluid dynamics, namely the navier-stokes equations. Put simply, fluid dynamics occurs simultaneously and dynamically on the full spectrum from micro to macro scales, which means dividing the atmosphere into discrete localized columns will always introduce error to the model (Christensen et al. 2020; Norman et al., 2022; Lovejoy et al., 2013). Additionally, these parametrisations are highly computationally expensive, and limit the temporal and spatial scalability of global climate models, further impeding attempts to increase spatio-temporal resolution in hopes of reducing previously mentioned errors (Christensen et al., 2024; Hu et al,. 2024).</p>
+
+<p>To resolve these issues, researchers have turned to the use of physical constraints, machine learning emulation, and stochastic parametrisations.</p>
+
+<h2 id="hybrid-physics-ml-models">Hybrid Physics-ML Models</h2>
+
+<p>One major area of active research is the development of hybrid physics-machine learning parametrisations.
+By training machine learning models on the inputs and outputs of our traditional physics parametrisations, researchers aim to sidestep high computational cost. These cheaper parametrisations could then accommodate higher resolution models, allowing for more explicit resolution of small scale dynamics (Hu et al,. 2024). However, there has been substantial difficulty in extending these machine learning parametrisations over longer time-scales, as their lack of physical constraints can hinder the model’s ability to generalize to novel data. Furthermore, there often exists a training gap between offline and online error (Lin et al., 2023). Offline error can be defined as the error of the machine learning model on the inputs and outputs of a single time step, and online error can be defined as the error in the overall climate model when these machine learning models are embedded and run in a dynamic feedback loop to obtain long term climate projections (Hu et al., 2024). Research has demonstrated that loss or gains in offline error are not necessarily reflected in the online error, leading to serious difficulties when optimizing these models (Lin et al., 2023; Wang et al., 2022). Furthermore, small accumulated online errors can lead to significant deviations in long-run simulations as ml-models struggle to account for coupled dynamics of the climate model and embedded ml-model (Lin et al., 2023).</p>
+
+<p>To address these challenges, researchers have worked on integrating physical constraints into these machine learning models, such as matter conservation, value ranges, and various physical laws (Hu et al., 2024; Beucler et al. 2021). These constraints have demonstrated marked improvement in online stability, and provide a strong footing for future advancement in ml parametrisations.</p>
+
+<h2 id="stochastic-parametrisation">Stochastic Parametrisation</h2>
+
+<p>Despite advancements in machine learning parametrisations, there persists substantial bias in both mean and variability for long-term climate predictions (Hu et al,. 2024). A promising approach is the incorporation of stochasticity in model parametrisations.</p>
+
+<p>Stochasticity is an inherent component of weather and climate forecasting. Within meteorology, the incorporation of stochasticity is the norm, not the exception. This often comes in the form of ensemble predictions, whereby weather models are run on slightly different initial conditions, and the outcomes are aggregated in order to find the consistent weather trend (Leutbecher et al., 2017). Another approach is the use of stochastic predictions, whereby the model predicts a probability density function for each variable that is sampled from in order to produce the final prediction (Palmer et al,. 2019). Both approaches have demonstrated substantial reduction in mean and variability bias (Berner et al., 2017; Christensen et al., 2017)
+In recent years, such approaches have been applied to climate modeling, leading to similar improvements in bias, such as the improvement of variability in El Niño-Southern Oscillation predictions, and the improvement in long-standing mean precipitation (Christensen et al., 2017; Stronmen et al., 2019).
+One critical component of such stochastic parametrisations is the incorporation of spatio-temporal correlation. Specifically, when simulating stochasticity, such as when drawing from a probability density function, there should be correlation between neighboring grid cells, as well as between timesteps (Christensen et al., 2024). Potential methods for this include autoregression, that is the inclusion of the previous timestep as model input, as well as the inclusion of state variables from neighboring columns (Plant et al,. 2008).</p>
+
+<h2 id="stochastic-parametrisation--machinelearning">Stochastic Parametrisation + Machine Learning</h2>
+
+<p>At the intersection of these evolving approaches is the incorporation of stochasticity in machine learning parametrisations.</p>
+
+<p>One successful approach has been the use of physically-informed Recurrent Neural Networks (RNN) for parametrisations (Parthipan et al., 2022). RNN’s work by allowing the model to learn short-term and long-term memory, allowing for the training of sophisticated temporal correlations between timesteps. This learned temporal correlation has demonstrated substantial improvement over traditional auto-regressive approaches, and suggests further potential for model improvement through the use and refinement of temporal correlations (Parthipan et al., 2022).</p>
+
+<p>Another successful implementation of temporal correlation has been through the use of multi-scale time-stepping (Chattopadhyay et al., 2022). Under this structure there are two forecast models, each operating on different timescales, in this case, 1 hour and 12 hours. By using the longer term predictions as input to the smaller timestep model, the smaller timestep model can incorporate long-running patterns. Additionally, since the longer forecast model uses a much larger time step, this approach can reduce the error associated with the accumulation of noise over smaller successive steps (Chattopadhyay et al., 2022). More complex, multi-scale time-step architectures have been proposed for similar dynamical systems, with the potential to further improve model performance through temporal correlation (Liu et al., 2021).
+Overall, the further integration of stochasticity in machine learning parametrisations promises substantial opportunities to improve model performance. By refining the use of spatio-temporal correlations and leveraging the rapid development of machine learning techniques, we move one step closer to improving the resolution and accuracy of global climate models, and one step closer to understanding and mitigating the development and impacts of global climate change.</p>
+
+<h2 id="references">References</h2>
+
+<p>Berner, J., Achatz, U., Batte, L., Bengtsson, L., De La Camara, A., Crommelin, D., Christensen, H., Colangeli, M., Dolaptchiev, S., Franzke, C. L. E., Friederichs, P., Imkeller, P., Jarvinen, H., Juricke, S., Kitsios, V., Lott, F., Lucarini, V., Mahajan, S., Palmer, T. N., … Yano, J.-I. (2015). Stochastic Parameterization: Towards a new view of Weather and Climate Models. In arXiv [physics.ao-ph]. arXiv. http://arxiv.org/abs/1510.08682</p>
+
+<p>Beucler T, Pritchard M, Rasp S, Ott J, Baldi P and Gentine P(2021) Enforcing analytic constraints in neural networks emulating physical systems. Physical Review Letters 9(126), 098302.</p>
+
+<p>Christensen, H. M., Kouhen, S., Miller, G., &amp; Parthipan, R. (2024). Machine learning for stochastic parametrization. Environmental Data Science, 3(e38), 1–12.</p>
+
+<p>Christensen HM(2020) Constraining stochastic parametrisation schemes using high-resolution simulations. Quarterly Journal of the Royal Meteorological Society 146(727), 938–962.</p>
+
+<p>Christensen HM, Berner J, Coleman DRB and Palmer TN (2017) Stochastic parameterization and El Niño-southern oscillation. Journal of Climate 30(1), 17–38, http://doi.org/10.1175/JCLI-D-16-0122.1.</p>
+
+<p>Chattopadhyay, A., Mustafa, M., Hassanzadeh, P., Bach, E., &amp; Kashinath, K. (2022). Towards physics-inspired data-driven weather forecasting: integrating data assimilation with a deep spatial-transformer-based U-NET in a case study with ERA5. Geoscientific Model Development, 15(5), 2221–2237.</p>
+
+<p>Hu, Z., Subramaniam, A., Kuang, Z., Lin, J., Yu, S., Hannah, W. M., Brenowitz, N. D., Romero, J., &amp; Pritchard, M. S. (2024). Stable machine-learning parameterization of subgrid processes in a comprehensive atmospheric model learned from embedded convection-permitting simulations. In arXiv [physics.ao-ph]. arXiv. http://arxiv.org/abs/2407.00124</p>
+
+<p>Leutbecher M, Lock SJ, Ollinaho P, Lang STK, Balsamo G, Bechtold P, Bonavita M, Christensen HM, Diamantakis M, Dutra E, et al. (2017) Stochastic representations of model uncertainties at ECMWF: state of the art and future vision. Quarterly Journal of the Royal Meteorological Society 143(707), 2315–2339. http://doi.org/10.1002/qj.3094.</p>
+
+<p>Lovejoy S and Schertzer D (2013) The Weather and Climate: Emergent Laws and Multifractal Cascades. Cambridge, UK: Cambridge University Press.</p>
+
+<p>Lin, J., Yu, S., Peng, L., Beucler, T., Wong-Toi, E., Hu, Z., Gentine, P., Geleta, M., &amp; Pritchard, M. (2023). Navigating the noise: Bringing clarity to ML parameterization design with O(100) ensembles. arXiv [physics.ao-ph].</p>
+
+<p>Liu, Y., Kutz, N., &amp; Brunton, S. (2021). Hierarchical deep learning of multiscale differential equation time-steppers. In arXiv [cs.CE]. arXiv. https://doi.org/10.26226/morressier.612f6735bc981037241007d1</p>
+
+<p>Norman, M. R., Bader, D. A., Eldred, C., Hannah, W. M., Hillman, B. R., Jones, C. R., Lee, J. M., Leung, L. R., Lyngaas, I., Pressel, K. G., Sreepathi, S., Taylor, M. A., &amp; Yuan, X. (2022). Unprecedented cloud resolution in a GPU-enabled full-physics atmospheric climate simulation on OLCF’s summit supercomputer. Int. J. High Perform. Comput. Appl., 36, 93–105.</p>
+
+<p>Palmer TN (2019) Stochastic weather and climate models.Nature Reviews Physics 1(7) 463–471, http://doi.org/10.1038/s42254-019- 0062–2.</p>
+
+<p>Plant RS and Craig GC(2008) A stochastic parameterization for deep convection based on equilibrium statistics. Journal of the Atmospheric Sciences 65(1), 87–105. ISSN 00224928. http://doi.org/10.1175/2007JAS2263.1.</p>
+
+<p>Parthipan, R., Christensen, H. M., Hosking, J. S., &amp; Wischik, D. J. (2022). Using Probabilistic Machine Learning to Better Model Temporal Patterns in Parameterizations: a case study with the Lorenz 96 model. In arXiv [cs.LG]. arXiv. http://arxiv.org/abs/2203.14814</p>
+
+<p>Schneider, T., Teixeira, J., Bretherton, C. S., Brient, F., Pressel, K. G., Sch¨ar, C., &amp; Siebesma, A. P. (2017). Climate goals and computing the future of clouds. Nature Climate Change, 7, 3–5.</p>
+
+<p>Strommen K, Christensen HM, Macleod D, Juricke S and Palmer TN (2019) Progress towards a probabilistic Earth system model: Examining the impact of stochasticity in the atmosphere and land component of EC-Earth v3.2. Geoscientific Model Development 12(7), http://doi.org/10.5194/gmd-12-3099-2019.</p>]]></content><author><name>Katherine Frields</name><email>frieldskatherine@gmail.com</email></author><summary type="html"><![CDATA[Ever growing in scientific and political importance, climate modeling serves as a critical tool in society’s battle against, and adaptation to, global climate change. To understand the present and the future of this field we must understand the role of physics, stochasticity, and increasingly, machine learning, in how we can predict our climate’s potential futures.]]></summary></entry></feed>
