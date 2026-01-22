@@ -109,7 +109,6 @@ Experience
 
 Presentations
 ======
-(2025, July). *“AI Generation of Thermodynamic Histories from Ice Crystal Images”*. Poster session presented at CUPP Symposium, Columbia, NY 
 - Giorgia Nicolaou, <u>Katherine Frields</u>, et al. “AI Generation of Thermodynamic Histories from Ice Crystal Images.” Poster session at CUPP Symposium, Columbia, NY. (2025, July).
 - <u>Katherine Frields</u>, et al. “Determining Thermodynamically Relevant Morphological Features of Cirrus Ice Crystals Using a Convolutional Neural Network.” Poster session at AGU, New Orleans, LA. (2025, December).
 - Giorgia Nicolaou, <u>Katherine Frields</u>, et al. “Inferring Thermodynamic Histories from In Situ Ice Crystal Imagery via Conditional Diffusion Models.” Oral session at AGU, New Orleans, LA. (2025, December).
