@@ -116,7 +116,7 @@ Presentations
   
 ---
 
-Presentations
+Publications
 ======
 - Jerry Lin, Zeyuan Hu, Tom Beucler, <u>Katherine Frields</u>, et al. "Crowdsourcing the Frontier: Advancing Hybrid Physics-ML Climate Simulation via $50,000 Kaggle Competition." arXiv preprint arXiv:2511.20963 (2025).
 
