@@ -20,7 +20,7 @@ layout: home
        alt="My profile photo" 
        style="width: 50vh; border-radius: 50%; border: .5px solid #fff; padding: 4px; margin-bottom: 1em; background-clip: content-box;">
   <p><strong>Katherine Frields</strong><br>
-UCI Data Science B.S & Earth System Science B.S | Columbia LEAP REU Student</p>
+Oxford Intelligent Earth DPhil Student</p>
 
 
 <a href="mailto:frieldskatherine@gmail.com"><i class="fas fa-fw fa-envelope icon-pad-right" aria-hidden="true"></i></a>
