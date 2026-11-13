@@ -54,3 +54,6 @@ html, body { margin: 0; padding: 0; background: none; height: 200vh; }
   text-align: left;   /* optional */
 }
 
+.masthead {
+  color: white;
+}
