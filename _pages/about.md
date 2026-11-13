@@ -30,7 +30,7 @@ Oxford Intelligent Earth DPhil Student</p>
 </a>
 </div>
 
-
+<div style="color: #fff;">
 The universe is a machine, and every scientific discipline--from physics to chemistry to the depths of mathematics--offers us a glimpse into its near-infinite complexity. Moreover, between these fields lie endless myriads of interactions, and in no other field is this more true than Climate Data Science. 
 
 Through the convergence of machine learning and climate science, I strive to advance our understanding of our planet and our future. Given the growing effects of climate change on human populations, accurate and applicable climate projections are more critical than ever before. Furthermore, with nearly annual groundbreaking advancements in AI and the ever climbing accuracy of AI Climate models, vast opportunities have opened up for rapid advancement in climate projections and scientific knowledge.
@@ -42,3 +42,6 @@ My own work in machine learning applications to climate and earth science has sp
 These experiences have further encouraged me to continue my research at the intersection of machine learning and climate science, and I am honored to be part of the global scientific effort to advance our understanding of this planet, and this universe.
 
 <!-- With the growing wealth of remote sensing data and the compliation of large-scale training dataset such as ClimSim AI weather and climate models have gone from a proof on concept to the future of the field.-->
+
+
+</div>
